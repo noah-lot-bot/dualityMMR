@@ -11,26 +11,36 @@ kit = ServoKit(channels=16)
 def servo_locations():
   while True:
     try: 
-      w = input("Where is the wheel servo? Enter an integer between 0 and 15.")
-      w = int(w)
-        if w<0 or w>15
-          raise ValueError("Invalid wheel servo location.")
-      k = input('Where is the knee servo? Enter an integer between 0 and 15.')
-      k = int(k)
-        if k<0 or k>15
-          raise ValueError("Invalid knee servo location.")
-        elif k==w
-          raise ValueError("Multiple servos cannot occupy same location.")
-      h = input("Where is the hip servo? Enter an integer between 0 and 15.")
-      h = int(h)
-        if h<0 or h>15
-          raise ValueError("Invalid hip servo location.")
-        elif h==w or h==k
-          raise ValueError("Multiple servos cannot occupy same location.")
-      return w, k, h
+      w = int(input("Where is the wheel servo? Enter an integer between 0 and 15."))
+      if 0<=w<=15:
+        break
+      print("Error: Servo location must be between 0 and 15.")
     except ValueError:
-      print("Please correct the invalid input")
+      print("Error: Servo location must be an integer.")
+  while True:
+    try: 
+      k = int(input('Where is the knee servo? Enter an integer between 0 and 15.'))
+      if not 0<=k<=15:
+        print("Error: Servo location must be between 0 and 15.")
+      elif k==w:
+        print("Error: Multiple servos cannot occupy the same location.")
+      else:
+        break
+    except ValueError:
+      print("Error: Servo location must be an integer.")
+  while True:
+    try:
+      h = int(input('Where is the hip servo? Enter an integer between 0 and 15.'))
+      if not 0<=h<=15:
+        print("Error: Servo location must be between 0 and 15.")
+      elif h==w or h==k:
+        print("Error: Multple servos cannot occupy the same location.")
+      else:
+        break
+    except ValueError:
+      print("Error: Servo location must be an integer.")
+  return w, k, h
 
-locations = servo_locations();
+w, k, h = servo_locations();
 print(f"Servo Locations: hip at {h}, wheel at {w}, knee at {k}.")
 
