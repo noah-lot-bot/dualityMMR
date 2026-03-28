@@ -65,8 +65,8 @@ try:
       kit.continuous_servo[wheel_loc].throttle=-1
     else:
       kit.continuous_servo[wheel_loc].throttle=0
-    if keyboard.is_pressed('esc'):
-      rover_shutdown()
+  if keyboard.is_pressed('esc'):
+    rover_shutdown()
     time.sleep(0.1)
 except Exception:
   print("Error has occured.")
