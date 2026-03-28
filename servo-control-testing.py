@@ -53,7 +53,6 @@ def rover_shutdown():
   kit.servo[hip_loc].angle=0
   kit.servo[knee_loc].angle=20
   time.sleep(1)
-  kit._pca.channels[wheel_loc]=None
   kit.servo[hip_loc].angle=None
   kit.servo[knee_loc].angle=None
   print("System shut down")
