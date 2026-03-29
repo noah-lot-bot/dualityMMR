@@ -120,7 +120,7 @@ def key_released(key):
     pass 
 
 # start the listener
-listener = keyboard.Listener(on_press = key_pressed, on_release = key_released)
+listen_keyboard(on_press = key_pressed, on_release = key_released,)
 
 
 # command the servos
