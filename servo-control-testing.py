@@ -87,7 +87,7 @@ def key_pressed(key):
     if key == "w":
       walk_forward = True
     elif key == "s":
-      walk_forward = True
+      walk_backward = True
     elif key == "e":
       knee_up = True
     elif key == "q":
@@ -107,7 +107,7 @@ def key_released(key):
     if key == "w":
       walk_forward = False
     elif key == "s":
-      walk_forward = False
+      walk_backward = False
     elif key == "e":
       knee_up = False
     elif key == "q":
