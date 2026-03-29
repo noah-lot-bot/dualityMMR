@@ -131,7 +131,7 @@ try:
       kit.continuous_servo[wheel_loc].throttle=1
     elif walk_backward: 
       kit.continuous_servo[wheel_loc].throttle=-1
-    elif not (walk_forward or walk_backward)
+    elif not (walk_forward or walk_backward):
       kit.continuous_servo[wheel_loc].throttle=0.2
     if knee_up:
       if knee_pos <= knee_max
