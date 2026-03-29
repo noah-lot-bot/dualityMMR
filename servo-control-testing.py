@@ -80,22 +80,22 @@ def rover_shutdown():
   stop_listening()
   print("System shut down.")
   
-# define keyboard listeners using pynput
+# define keyboard listeners using sshkeyboard
 def key_pressed(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
-    if key =="w":
-      walk_forward == True
-    elif key =="s":
-      walk_forward == True
+    if key == "w":
+      walk_forward = True
+    elif key == "s":
+      walk_forward = True
     elif key == "e":
-      knee_up == True
+      knee_up = True
     elif key == "q":
-      knee_down == True
+      knee_down = True
     elif key == "d":
-      hip_forward == True
+      hip_forward = True
     elif key == "a":
-      hip_backward == True
+      hip_backward = True
   except AttributeError:
     if key == "esc":
       rover_shutdown()
@@ -105,17 +105,17 @@ def key_released(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
     if key == "w":
-      walk_forward == False
-    elif key =="s":
-      walk_forward == False
+      walk_forward = False
+    elif key == "s":
+      walk_forward = False
     elif key == "e":
-      knee_up == False
+      knee_up = False
     elif key == "q":
-      knee_down == False
+      knee_down = False
     elif key == "d":
-      hip_forward == False
+      hip_forward = False
     elif key == "a":
-      hip_backward == False
+      hip_backward = False
   except AttributeError:
     pass 
 
