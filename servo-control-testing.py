@@ -134,21 +134,21 @@ try:
     elif not (walk_forward or walk_backward):
       kit.continuous_servo[wheel_loc].throttle=0.2
     if knee_up:
-      if knee_pos <= knee_max
+      if knee_pos <= knee_max:
         knee_pos += 1
         kit.servo[knee_loc].angle = knee_pos
     elif knee_down:
-      if knee_pos >= knee_min
+      if knee_pos >= knee_min:
         knee_pos -= 1
         kit.servo[knee_loc].angle = knee_pos
     elif not (knee_down or knee_up):
       pass
     if hip_forward:
-      if hip_pos <= hip_max
+      if hip_pos <= hip_max:
         hip_pos += 1
         kit_servo[hip_loc].angle = hip_pos
     elif hip_backward: 
-      if hip_pos >= hip_min
+      if hip_pos >= hip_min:
         hip_pos -= 1
         kit.servo[hip_loc].angle = hip_pos
     elif not (hip_forward or hip_backward):
