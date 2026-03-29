@@ -145,7 +145,7 @@ try:
     if hip_forward:
       if hip_pos <= hip_max:
         hip_pos += 1
-        kit_servo[hip_loc].angle = hip_pos
+        kit.servo[hip_loc].angle = hip_pos
     elif hip_backward: 
       if hip_pos >= hip_min:
         hip_pos -= 1
