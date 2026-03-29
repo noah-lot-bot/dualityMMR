@@ -9,7 +9,7 @@ import time
 
 # define some global variables
 hip_min, hip_max, hip_neutral = 20, 115, 68
-knee_min, knee_max, knee_neutral = 60, 130 95
+knee_min, knee_max, knee_neutral = 60, 130, 95
 wheel_stop = 0.2
 
 walk_forward, walk_backward = False, False
@@ -97,8 +97,8 @@ def key_pressed(key):
       hip_forward == True
     elif key.char == "a":
       hip_backward == True
-    else AttributeError:
-      if key == keyboard.Key.esc
+  except AttributeError:
+    if key == keyboard.Key.esc:
       rover_shutdown()
       return False
 
@@ -117,8 +117,8 @@ def key_released(key):
       hip_forward == False
     elif key.char == "a":
       hip_backward == False
-    else AttributeError:
-      pass 
+  except AttributeError:
+    pass 
 
 # start the listener
 listener = keyboard.Listener(on_press = key_pressed, on_release = key_released)
