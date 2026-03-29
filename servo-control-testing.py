@@ -141,7 +141,7 @@ try:
       if knee_pos >= knee_min
         knee_pos -= 1
         kit.servo[knee_loc].angle = knee_pos
-    elif not (knee_down or knee_up)
+    elif not (knee_down or knee_up):
       pass
     if hip_forward:
       if hip_pos <= hip_max
@@ -151,7 +151,7 @@ try:
       if hip_pos >= hip_min
         hip_pos -= 1
         kit.servo[hip_loc].angle = hip_pos
-    elif not (hip_forward or hip_backward)
+    elif not (hip_forward or hip_backward):
       pass
     time.sleep(1)
 except KeyboardInterrupt:
