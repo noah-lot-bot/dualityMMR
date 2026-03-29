@@ -152,7 +152,7 @@ try:
         kit.servo[hip_loc].angle = hip_pos
     elif not (hip_forward or hip_backward):
       pass
-    time.sleep(1)
+    time.sleep(0.1)
 except KeyboardInterrupt:
   rover_shutdown()
         
