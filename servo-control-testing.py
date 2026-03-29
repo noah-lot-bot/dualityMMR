@@ -85,17 +85,25 @@ def key_pressed(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
     if key == "w":
-      walk_forward = True
+      kit.continuous_servo[wheel_loc].throttle=1
     elif key == "s":
-      walk_backward = True
+      kit.continuous_servo[wheel_loc].throttle=-1
     elif key == "e":
-      knee_up = True
+      if knee_pos <= knee_max:
+        knee_pos += 1
+        kit.servo[knee_loc].angle = knee_pos
     elif key == "q":
-      knee_down = True
+      if knee_pos >= knee_min:
+        knee_pos -= 1
+        kit.servo[knee_loc].angle = knee_pos
     elif key == "d":
-      hip_forward = True
+      if hip_pos <= hip_max:
+        hip_pos += 1
+        kit.servo[hip_loc].angle = hip_pos
     elif key == "a":
-      hip_backward = True
+      if hip_pos >= hip_min:
+        hip_pos -= 1
+        kit.servo[hip_loc].angle = hip_pos
   except AttributeError:
     if key == "esc":
       rover_shutdown()
@@ -105,24 +113,19 @@ def key_released(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
     if key == "w":
-      walk_forward = False
+      kit.continuous_servo[wheel_loc].throttle=0
     elif key == "s":
-      walk_backward = False
-    elif key == "e":
-      knee_up = False
-    elif key == "q":
-      knee_down = False
-    elif key == "d":
-      hip_forward = False
-    elif key == "a":
-      hip_backward = False
+      kit.continuous_servo[wheel_loc].throttle=0
   except AttributeError:
     pass 
 
 # start the listener
-listen_keyboard(on_press = key_pressed, on_release = key_released,)
+try:
+  listen_keyboard(on_press = key_pressed, on_release = key_released,)
+finally:
+  rover_shutdown()
 
-
+"""
 # command the servos
 try:
   while True: 
@@ -152,10 +155,9 @@ try:
         kit.servo[hip_loc].angle = hip_pos
     elif not (hip_forward or hip_backward):
       pass
-    time.sleep(0.1)
+    time.sleep(1)
+    
 except KeyboardInterrupt:
   rover_shutdown()
-        
-    
-# command the servos by checking for green flags
+  """
 
