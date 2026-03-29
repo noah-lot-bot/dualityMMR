@@ -2,7 +2,7 @@
 from adafruit_servokit import ServoKit
 
 # import the keyboard detection library 
-from pynput import keyboard
+from sshkeyboard import listen_keyboard
 
 # import timelibrary
 import time
@@ -77,52 +77,51 @@ def rover_shutdown():
   kit.servo[hip_loc].angle = None
   kit.servo[knee_loc].angle = None
   kit.continuous_servo[wheel_loc].throttle = 0.2
-  listener.stop()
-  listener.join()
+  stop_listening()
   print("System shut down.")
   
 # define keyboard listeners using pynput
 def key_pressed(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
-    if key.char=="w":
+    if key =="w":
       walk_forward == True
-    elif key.char=="s":
+    elif key =="s":
       walk_forward == True
-    elif key.char == "e":
+    elif key == "e":
       knee_up == True
-    elif key.char == "q":
+    elif key == "q":
       knee_down == True
-    elif key.char == "d":
+    elif key == "d":
       hip_forward == True
-    elif key.char == "a":
+    elif key == "a":
       hip_backward == True
   except AttributeError:
-    if key == keyboard.Key.esc:
+    if key == "esc":
       rover_shutdown()
       return False
 
 def key_released(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
-    if key.char=="w":
+    if key == "w":
       walk_forward == False
-    elif key.char=="s":
+    elif key =="s":
       walk_forward == False
-    elif key.char == "e":
+    elif key == "e":
       knee_up == False
-    elif key.char == "q":
+    elif key == "q":
       knee_down == False
-    elif key.char == "d":
+    elif key == "d":
       hip_forward == False
-    elif key.char == "a":
+    elif key == "a":
       hip_backward == False
   except AttributeError:
     pass 
 
 # start the listener
 listener = keyboard.Listener(on_press = key_pressed, on_release = key_released)
-listener.start()
+
 
 # command the servos
 try:
