@@ -89,11 +89,11 @@ def key_pressed(key):
       kit.continuous_servo[wheel_loc].throttle=1
     elif key == "s":
       kit.continuous_servo[wheel_loc].throttle=-1
-    elif key == "e":
+    elif key == "q":
       if knee_pos <= knee_max:
         knee_pos += 5
         kit.servo[knee_loc].angle = knee_pos
-    elif key == "q":
+    elif key == "e":
       if knee_pos >= knee_min:
         knee_pos -= 5
         kit.servo[knee_loc].angle = knee_pos
