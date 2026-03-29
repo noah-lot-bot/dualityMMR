@@ -2,7 +2,7 @@
 from adafruit_servokit import ServoKit
 
 # import the keyboard detection library 
-from sshkeyboard import listen_keyboard
+from sshkeyboard import listen_keyboard, stop_listening
 
 # import timelibrary
 import time
