@@ -83,6 +83,7 @@ def rover_shutdown():
 # define keyboard listeners using sshkeyboard
 def key_pressed(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
+  global knee_pos, hip_pos
   try: 
     if key == "w":
       kit.continuous_servo[wheel_loc].throttle=1
@@ -113,9 +114,9 @@ def key_released(key):
   global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
   try: 
     if key == "w":
-      kit.continuous_servo[wheel_loc].throttle=0
+      kit.continuous_servo[wheel_loc].throttle=0.2
     elif key == "s":
-      kit.continuous_servo[wheel_loc].throttle=0
+      kit.continuous_servo[wheel_loc].throttle=0.2
   except AttributeError:
     pass 
 
