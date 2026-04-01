@@ -28,4 +28,8 @@ back_right_leg = leg()
 # for right now since you do not have the locations you can pull something still with its correct name and we will fill in later
 front_left_leg.hip_location # like so , example only
 
-# the first step in the auto gait demo is to 
+# the first step in the auto gait demo is to set up neutral positions and set wheels to stop (WIP)
+kit.servo[front_right_leg.hip_location].angle = front_right_leg.hip_neutral
+
+def flat_ground_gait(): #WIP
+  kit.servo[front_left_leg.knee_location].angle = 30
