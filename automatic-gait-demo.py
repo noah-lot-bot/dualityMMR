@@ -1,14 +1,15 @@
 from adafruit_servokit import ServoKit
 import sshkeyboard
+import asyncio
 
 # notes for matthew
 kit = ServoKit(channels=16) # creates the board with 16 channels 0-15
-kit.servo[int].angle = float #board.servo[position].angle = angle to set number to (limited from 0 to 180)
+kit.servo[int].angle = float #board.servo[position].angle = angle to set number to (limited from 0 to 180, no negatives)
 kit.continuous_servo[int].throttle = float #board.servo[position]."Speed" = speed to set cont servo to (limited -1 to 1)
 
 # i do not know the neutral positions of each servo so we cannot count on those rn, will update later
 class leg:
-  wheel_stop = # should be constant across all legs
+  wheel_stop = 0.2 # should be constant across all legs
   def __init__(self, hip_location, knee_location, wheel_location, hip_min, hip_max, hip_neutral, knee_min, knee_max, knee_neutral):
     self.hip_location = hip_location
     self.knee_location = knee_location
@@ -21,15 +22,32 @@ class leg:
     self.knee_neutral = knee_neutral
 
 # we are going to hard code the servo locations because its way easier than asking for them
-front_right_leg = leg()
-back_left_leg = leg()
-back_right_leg = leg()
+front_left_leg = leg(0,1,2,64,)
+front_right_leg = leg(3,4,5)
+back_left_leg = leg(6,7,8)
+back_right_leg = leg(9,10,11)
 
-# for right now since you do not have the locations you can pull something still with its correct name and we will fill in later
-front_left_leg.hip_location # like so , example only
+# define a function to rotate a servo from an initial to final position, accept negative angles, WIP: SMOOTH MOTION
+async def rotate_servo(servo_location, angle):
+  servo_pos_init = kit.servo[servo_location].angle
+  servo_pos_fin = servo_pos_init + angle
+  kit.servo[servo_location].angle = servo_pos_fin
 
-# the first step in the auto gait demo is to set up neutral positions and set wheels to stop (WIP)
-kit.servo[front_right_leg.hip_location].angle = front_right_leg.hip_neutral
+# the first step in the automatic gait demo is to set all legs to their neutral positions
+async def set_neutral():
+  await asyncio.gather(
+    kit.servo[front_left_leg.knee_location].angle = front_left_leg.knee_neutral,
+    kit.servo[front_left_leg.hip_location].angle = front_left_leg.hip_neutral
 
-def flat_ground_gait(): #WIP
-  kit.servo[front_left_leg.knee_location].angle = 30
+async def flat_ground_gait():
+  rotate_servo(front_left_leg.knee_location, 30)
+  rotate_servo(front_left_leg.hip_location, 40)
+  rotate_servo(front_left_leg.knee_location, -30)
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10),
+    rotate_servo(back_left_leg.hip_location, -10),
+    rotate_servo(front_right_leg.hip_location, 10),
+    rotate_servo(back_right_leg.hip_location, 10)
+  )
+  rotate_servo
+  
