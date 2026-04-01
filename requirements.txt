@@ -1,3 +1,5 @@
 adafruit-circuitpython-servokit
 rpi-lgpio
 sshkeyboard
+sparkfun-qwiic-ism330dhcx
+sparkfun-qwiic-mmc5983ma
