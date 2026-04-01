@@ -28,26 +28,68 @@ back_left_leg = leg(6,7,8)
 back_right_leg = leg(9,10,11)
 
 # define a function to rotate a servo from an initial to final position, accept negative angles, WIP: SMOOTH MOTION
-async def rotate_servo(servo_location, angle):
+async def rotate_servo(servo_location, angle, period):
   servo_pos_init = kit.servo[servo_location].angle
   servo_pos_fin = servo_pos_init + angle
+  while servo_pos_curr :!= servo_pos_fin # WORK IN PROGRESS
   kit.servo[servo_location].angle = servo_pos_fin
 
 # the first step in the automatic gait demo is to set all legs to their neutral positions
-async def set_neutral():
+async def set_neutral(): # WIP
   await asyncio.gather(
     kit.servo[front_left_leg.knee_location].angle = front_left_leg.knee_neutral,
     kit.servo[front_left_leg.hip_location].angle = front_left_leg.hip_neutral
 
-async def flat_ground_gait():
-  rotate_servo(front_left_leg.knee_location, 30)
-  rotate_servo(front_left_leg.hip_location, 40)
-  rotate_servo(front_left_leg.knee_location, -30)
+async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  # front left
+  await rotate_servo(front_left_leg.knee_location, 30,)
+  await rotate_servo(front_left_leg.hip_location, 40,)
+  await rotate_servo(front_left_leg.knee_location, -30,)
   await asyncio.gather( 
-    rotate_servo(front_left_leg.hip_location, -10),
-    rotate_servo(back_left_leg.hip_location, -10),
-    rotate_servo(front_right_leg.hip_location, 10),
-    rotate_servo(back_right_leg.hip_location, 10)
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,)
   )
-  rotate_servo
+  await asyncio.gather(
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # back right
+  await rotate_servo(back_right_leg.knee_location, 30,)
+  await rotate_servo(back_right_leg.hip_location, -40,)
+  await rotate_servo(back_right_leg.knee_location, -30,)
+  await asyncio.gather(
+    rotate_servo(left_front_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,)
+  )
+  await asyncio.gather(
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # front right
+  await rotate_servo(front_right_leg.knee_location, 30,)
+  await rotate_servo(back_right_leg.hip_location, -40,)
+  await rotate_servo(back_right_leg.knee_locationm -30,)
+  await asyncio.gather(
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,)
+  )
+  await asyncio.gather(
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # back left
+  await rotate_servo(front_right_leg.knee_location, 30,)
+  await rotate_servo(back_right_leg.hip_location, -40,)
+  await rotate_servo(back_right_leg.knee_location, -30,)
+  await asyncio.gather(
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,)
+  )
+  await asyncio.gather(
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location,10,)
+  )
+
+def upslope_partial_lower_gait():
+    
   
