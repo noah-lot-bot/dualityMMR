@@ -27,7 +27,7 @@ async def main():
   servo_inp_loc_2 = int(input("Enter Servo Location: "))
   inp_angle_2 = float(input("Enter Change in Angle: "))
   inp_period_2 = float(input("Enter target period: "))
-  asycio.gather(
+  asyncio.gather(
     rotate_servo(servo_inp_loc_1, inp_angle_1, inp_period_1),
     rotate_servo(servo_inp_loc_2, inp_angle_2, inp_period_2)
   )
