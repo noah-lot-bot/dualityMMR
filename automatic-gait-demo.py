@@ -47,9 +47,7 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   await rotate_servo(front_left_leg.knee_location, -30,)
   await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -10,),
-    rotate_servo(back_left_leg.hip_location, -10,)
-  )
-  await asyncio.gather(
+    rotate_servo(back_left_leg.hip_location, -10,),
     rotate_servo(front_right_leg.hip_location, 10,),
     rotate_servo(back_right_leg.hip_location, 10,)
   )
@@ -57,11 +55,9 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   await rotate_servo(back_right_leg.knee_location, 30,)
   await rotate_servo(back_right_leg.hip_location, -40,)
   await rotate_servo(back_right_leg.knee_location, -30,)
-  await asyncio.gather(
-    rotate_servo(left_front_leg.hip_location, -10,),
-    rotate_servo(back_left_leg.hip_location, -10,)
-  )
-  await asyncio.gather(
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,),
     rotate_servo(front_right_leg.hip_location, 10,),
     rotate_servo(back_right_leg.hip_location, 10,)
   )
@@ -69,11 +65,9 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   await rotate_servo(front_right_leg.knee_location, 30,)
   await rotate_servo(back_right_leg.hip_location, -40,)
   await rotate_servo(back_right_leg.knee_locationm -30,)
-  await asyncio.gather(
+  await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -10,),
-    rotate_servo(back_left_leg.hip_location, -10,)
-  )
-  await asyncio.gather(
+    rotate_servo(back_left_leg.hip_location, -10,),
     rotate_servo(front_right_leg.hip_location, 10,),
     rotate_servo(back_right_leg.hip_location, 10,)
   )
@@ -81,15 +75,119 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   await rotate_servo(front_right_leg.knee_location, 30,)
   await rotate_servo(back_right_leg.hip_location, -40,)
   await rotate_servo(back_right_leg.knee_location, -30,)
-  await asyncio.gather(
+  await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -10,),
-    rotate_servo(back_left_leg.hip_location, -10,)
-  )
-  await asyncio.gather(
+    rotate_servo(back_left_leg.hip_location, -10,),
     rotate_servo(front_right_leg.hip_location, 10,),
-    rotate_servo(back_right_leg.hip_location,10,)
+    rotate_servo(back_right_leg.hip_location, 10,)
   )
 
-def upslope_partial_lower_gait():
-    
-  
+
+
+async def upslope_partial_lower_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  # front left
+  await rotate_servo(front_left_leg.knee_location, 30,)
+  await rotate_servo(front_left_leg.hip_location, 40,)
+  await rotate_servo(front_left_leg.knee_location, -30,)
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,),
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # lower rear
+  await asyncio.gather(
+    rotate_servo(back_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, 35,) # physical max (TBD)
+  )
+  # back right
+  await rotate_servo(back_right_leg.hip_location, -40,)
+  # raise rear
+  await asyncio.gather(
+    rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+  )
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,),
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # front right
+  await rotate_servo(front_right_leg.knee_location, 30,)
+  await rotate_servo(back_right_leg.hip_location, -40,)
+  await rotate_servo(back_right_leg.knee_locationm -30,)
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,),
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+  # lower rear
+  await asyncio.gather(
+    rotate_servo(back_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, 35,) # physical max (TBD)
+  )
+  # back left
+  await rotate_servo(back_left_leg.hip_location, -40,)
+  # raise rear
+  await asyncio.gather(
+    rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+  )
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.hip_location, -10,),
+    rotate_servo(back_left_leg.hip_location, -10,),
+    rotate_servo(front_right_leg.hip_location, 10,),
+    rotate_servo(back_right_leg.hip_location, 10,)
+  )
+
+
+
+async def upslope_downslope_full_lower_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  # lower
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(front_right_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, 35,) # physical max (TBD)
+  )
+  # front legs
+  await asyncio.gather(
+    rotate_servo(front_left_leg.hip_location, 40,),
+    rotate_servo(front_right_leg.hip_location, -40,)
+  )
+  # raise and adjust chassis
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(front_right_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+    rotate_servo(front_left_leg.hip_location, -20,),
+    rotate_servo(back_left_leg.hip_location, -20,),
+    rotate_servo(front_right_leg.hip_location, 20,),
+    rotate_servo(back_right_leg.hip_location, 20,)
+  )
+  # lower
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_left_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(front_right_leg.knee_location, 35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, 35,) # physical max (TBD)
+  )
+  # rear legs
+  await asyncio.gather(
+    rotate_servo(back_left_leg.hip_location, 40,),
+    rotate_servo(back_right_leg.hip_location, -40,)
+  )
+  # raise and adjust chassis
+  await asyncio.gather( 
+    rotate_servo(front_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(front_right_leg.knee_location, -35,), # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+    rotate_servo(front_left_leg.hip_location, -20,),
+    rotate_servo(back_left_leg.hip_location, -20,),
+    rotate_servo(front_right_leg.hip_location, 20,),
+    rotate_servo(back_right_leg.hip_location, 20,)
+  )
