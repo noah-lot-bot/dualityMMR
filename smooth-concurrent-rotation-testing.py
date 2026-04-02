@@ -21,10 +21,17 @@ async def rotate_servo(location, angle, period):
     await asyncio.sleep(0.02)
 
 async def main():
-  servo_inp_loc = int(input("Enter Servo Location: "))
-  inp_angle = float(input("Enter Change in Angle: "))
-  inp_period = float(input("Enter target period: "))
-  await rotate_servo(servo_inp_loc, inp_angle, inp_period)
+  servo_inp_loc_1 = int(input("Enter Servo Location: "))
+  inp_angle_1 = float(input("Enter Change in Angle: "))
+  inp_period_1 = float(input("Enter target period: "))
+  servo_inp_loc_2 = int(input("Enter Servo Location: "))
+  inp_angle_2 = float(input("Enter Change in Angle: "))
+  inp_period_2 = float(input("Enter target period: "))
+  asycio.gather(
+    rotate_servo(servo_inp_loc_1, inp_angle_1, inp_period_1),
+    rotate_servo(servo_inp_loc_2, inp_angle_2, inp_period_2)
+  )
+    
 
 asyncio.run(main())
   
