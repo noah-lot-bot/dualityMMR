@@ -162,7 +162,7 @@ async def upslope_downslope_full_lower_gait(front_left_leg, front_right_leg, bac
     rotate_servo(front_left_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(front_right_leg.knee_location, -35,), # physical max (TBD)
-    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(front_left_leg.hip_location, -20,),
     rotate_servo(back_left_leg.hip_location, -20,),
     rotate_servo(front_right_leg.hip_location, 20,),
@@ -185,7 +185,7 @@ async def upslope_downslope_full_lower_gait(front_left_leg, front_right_leg, bac
     rotate_servo(front_left_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(back_left_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(front_right_leg.knee_location, -35,), # physical max (TBD)
-    rotate_servo(back_right_leg.knee_location, -35,) # physical max (TBD)
+    rotate_servo(back_right_leg.knee_location, -35,), # physical max (TBD)
     rotate_servo(front_left_leg.hip_location, -20,),
     rotate_servo(back_left_leg.hip_location, -20,),
     rotate_servo(front_right_leg.hip_location, 20,),
