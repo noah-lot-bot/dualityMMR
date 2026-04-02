@@ -3,7 +3,8 @@ import time
 import asyncio
 
 kit = ServoKit(channels=16)
-kit.servo[0].angle = 
+kit.servo[0].angle = 60
+kit.servo[1].angle = 90
 async def rotate_servo(location, angle, period):
   servo_pos_init = kit.servo[location].angle
   servo_pos_fin = servo_pos_init + angle
