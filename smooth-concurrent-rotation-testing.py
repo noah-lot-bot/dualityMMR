@@ -1,6 +1,7 @@
 from adafruit_servokit import ServoKit
 import time
 import asyncio
+import math
 
 kit = ServoKit(channels=16)
 kit.servo[0].angle = 60
@@ -12,6 +13,7 @@ async def rotate_servo(location, angle, period):
   while True:
     time_elapsed = time.time()-time_init
     prog = time_elapsed/period
+    smooth_prog = (1-math.cos(prog*math.pi))/2
     if prog >= 1:
       break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*prog
