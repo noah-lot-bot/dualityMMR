@@ -2,14 +2,12 @@ from adafruit_servokit import ServoKit
 import sshkeyboard
 import asyncio
 
-# notes for matthew
-kit = ServoKit(channels=16) # creates the board with 16 channels 0-15
-kit.servo[int].angle = float #board.servo[position].angle = angle to set number to (limited from 0 to 180, no negatives)
-kit.continuous_servo[int].throttle = float #board.servo[position]."Speed" = speed to set cont servo to (limited -1 to 1)
+# establish the pwm board
+kit = ServoKit(channels=16)
 
 # i do not know the neutral positions of each servo so we cannot count on those rn, will update later
 class leg:
-  wheel_stop = 0.2 # should be constant across all legs
+  wheel_stop = 0.2 # should be constant across all legs (WIP)
   def __init__(self, hip_location, knee_location, wheel_location, hip_min, hip_max, hip_neutral, knee_min, knee_max, knee_neutral):
     self.hip_location = hip_location
     self.knee_location = knee_location
@@ -21,26 +19,36 @@ class leg:
     self.knee_max = knee_max
     self.knee_neutral = knee_neutral
 
-# we are going to hard code the servo locations because its way easier than asking for them
+# we are going to hard code the servo locations because its way easier than asking for them (WIP)
 front_left_leg = leg(0,1,2,64,)
 front_right_leg = leg(3,4,5)
 back_left_leg = leg(6,7,8)
 back_right_leg = leg(9,10,11)
 
-# define a function to rotate a servo from an initial to final position, accept negative angles, WIP: SMOOTH MOTION
+# define a function to rotate a servo from an initial to final position, accept negative angles, smooth motion
 async def rotate_servo(servo_location, angle, period):
-  servo_pos_init = kit.servo[servo_location].angle
+  servo_pos_init = kit.servo[location].angle
   servo_pos_fin = servo_pos_init + angle
-  while servo_pos_curr :!= servo_pos_fin # WORK IN PROGRESS
-  kit.servo[servo_location].angle = servo_pos_fin
+  time_init = time.time()
+  while True:
+    time_elapsed = time.time()-time_init
+    progress = time_elapsed/period
+    s_curve = (1-math.cos(progress*math.pi))/2
+    if progress >= 1:
+      break
+    servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
+    kit.servo[location].angle = servo_pos_curr
+    await asyncio.sleep(0.02)
+
 
 # the first step in the automatic gait demo is to set all legs to their neutral positions
 async def set_neutral(): # WIP
   await asyncio.gather(
-    kit.servo[front_left_leg.knee_location].angle = front_left_leg.knee_neutral,
-    kit.servo[front_left_leg.hip_location].angle = front_left_leg.hip_neutral
+    kit.servo[front_left_leg.knee_location].angle = None,
+    kit.servo[front_left_leg.hip_location].angle = None
 
 async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  # WIP : need to add periods for all movement commands
   # front left
   await rotate_servo(front_left_leg.knee_location, 30,)
   await rotate_servo(front_left_leg.hip_location, 40,)
