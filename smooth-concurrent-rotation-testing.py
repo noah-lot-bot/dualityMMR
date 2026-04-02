@@ -18,10 +18,6 @@ async def rotate_servo(location, angle, period):
     kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
 
-servo_inp_loc = int(input("Enter Servo Location: "))
-inp_angle = float(input("Enter Change in Angle: "))
-inp_period = float(input("Enter target period: "))
-
 async def main():
   servo_inp_loc = int(input("Enter Servo Location: "))
   inp_angle = float(input("Enter Change in Angle: "))
