@@ -9,9 +9,9 @@ async def rotate_servo(location, angle, period):
   servo_pos_init = kit.servo[location].angle
   servo_pos_fin = servo_pos_init + angle
   time_init = time.time()
-  time_elapsed = time.time()-time_init
-  prog = time_elapsed/period
   while True:
+    time_elapsed = time.time()-time_init
+    prog = time_elapsed/period
     if prog >= 1:
       break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*prog
