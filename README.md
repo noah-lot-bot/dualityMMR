@@ -1,32 +1,48 @@
-# dualityMMR
+![dualityMMR](documents/images/MissProf.png)
+# DUALITY
 Duality is a multi-modal rover created for AE 4322: Space System Design II.
 
-To access the raspberry pi:
-The computer from which you send commands must be on the same wifi network as the Raspberry PI.
+## Access
+Open the Windows Powershell Terminal on your device. **Note**: your device must be on the same wifi network as the duality-rpi.
 
-type this command in:
+Enter this command in the terminal (without the brackets):
+```
 ssh duality@[IP ADDRESS OF PI]
+```
+For example:
+```
+ssh duality@172.22.166.27
+```
+Enter this password (**Note**: it will not show as you type it): duality2026
 
-type in this password (it will not show the password, so type it in correctly):
-duality2026
-
-from there you open the github directory with this command:
+Open this GitHub directory using the following command:
+```
 cd dualityMMR
-
-update the current software with this command:
-
+```
+Update the current software with this command:
+```
 git pull
-
-open the virtual environment with this command:
+```
+Open the virtual environment with this command:
+```
 source venv/bin/activate
-
-now you can run any program for testing, to see a list of all the programs in any directory type this command:
+```
+Now you should be able to run any program present in this repository. To see a list of the current directory, use the following command:
+```
 ls
+```
+You can use the `cd` command to get to any location in the current directory. and `cd ..` to move up a level.
 
-to move up a level in the directory:
-cd ..
+To run a program, make sure you put `python` in front of the filename.
+```
+python testing.py
+```
 
-if you get an error like "some module isnt included" for some reason try this
-install -r requirements.txt
+## Troubleshooting
+If you get an error that says a module is missing or cannot be found, try this:
+```
+cd documents
+pip install -r requirements.txt
+```
 
 
