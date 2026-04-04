@@ -53,7 +53,7 @@ def imu_reader():
         imu_data = {
           "x_accel": accelData.xData,
           "y_accel": accelData.yData,
-          "z_accel": accelData.zData
+          "z_accel": accelData.zData,
           "x_rot": gyroData.xData,
           "y_rot": gyroData.yData,
           "z_rot": gyroData.zData
