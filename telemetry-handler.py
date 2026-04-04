@@ -3,7 +3,7 @@
 # vibration: fft of accel data
 # zero moment point control
 # pull voltage data? and cpu usage. should be easy enough
-from paho-mqtt import client as mqtt
+from paho.mqtt import client as mqtt
 import json
 import time
 import qwiic_ism330dhcx
