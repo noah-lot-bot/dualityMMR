@@ -63,7 +63,7 @@ def imu_reader():
         payload = json.dumps({
           imu_data_package: imu_data,
           gyro_data_package: gyro_data
-        }
+        })
         client.publish(topic, payload)
         time.sleep(0.1)
   except KeyboardInterrupt:
