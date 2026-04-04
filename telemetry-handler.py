@@ -50,21 +50,21 @@ def imu_reader():
         gyroData = myIsm.get_gyro()
         time.sleep(0.100)
         
-          imu_data = {
-            "x_accel": accelData.xData,
-            "y_accel": accelData.yData,
-            "z_accel": accelData.zData
-          }
-          gyro_data = {
-            "x_rot": gyroData.xData,
-            "y_rot": gyroData.yData,
-            "z_rot": gyroData.zData
-          }
-          payload = json.dumps({
-            imu_data_package: imu_data,
-            gyro_data_package: gyro_data
-          }
-          client.publish(topic, payload)
+        imu_data = {
+          "x_accel": accelData.xData,
+          "y_accel": accelData.yData,
+          "z_accel": accelData.zData
+        }
+        gyro_data = {
+          "x_rot": gyroData.xData,
+          "y_rot": gyroData.yData,
+          "z_rot": gyroData.zData
+        }
+        payload = json.dumps({
+          imu_data_package: imu_data,
+          gyro_data_package: gyro_data
+        }
+        client.publish(topic, payload)
         time.sleep(0.1)
   except KeyboardInterrupt:
     client.loop_stop()
