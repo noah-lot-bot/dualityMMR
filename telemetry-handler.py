@@ -10,7 +10,7 @@ import qwiic_ism330dhcx
 
 broker = "localhost"
 port = 1883
-topic = duality/telemetry/imu
+topic = "duality/telemetry/imu"
 
 # create the client
 client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.Version2)
