@@ -26,9 +26,7 @@ def imu_reader():
   myIsm = qwiic_ism330dhcx.QwiicISM330DHCX()
   myIsm.begin()
   while myIsm.get_device_reset() == False:
-        time.sleep(1)
-    
-    time.sleep(0.100)
+    time.sleep(1)
 
     myIsm.set_device_config()
     myIsm.set_block_data_update()
@@ -67,7 +65,7 @@ def imu_reader():
             gyro_data_package: gyro_data
           }
           client.publish(topic, payload)
-          time.sleep(0.1)
+        time.sleep(0.1)
   except KeyboardInterrupt:
     client.loop_stop()
     client.disconnect()
