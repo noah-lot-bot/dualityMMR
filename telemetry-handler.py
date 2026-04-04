@@ -13,7 +13,7 @@ port = 1883
 topic = "duality/telemetry/imu"
 
 # create the client
-client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.Version2)
+client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2)
 
 # connect the client to the broker (Docker container)
 client.connect(broker,port,60)
