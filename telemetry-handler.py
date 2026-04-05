@@ -8,7 +8,7 @@ import json
 import time
 import qwiic_ism330dhcx
 
-broker = "localhost"
+broker = "10.137.166.27"
 port = 1883
 topic = "duality/telemetry/imu"
 
