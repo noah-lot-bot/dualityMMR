@@ -55,17 +55,17 @@ try:
     reading = imu_reader()
     if reading[0] is not None:
       accelData, gyroData = reading
-    imu_data = {
-      "x_accel": accelData.xData,
-      "y_accel": accelData.yData,
-      "z_accel": accelData.zData,
-      "x_rot": gyroData.xData,
-      "y_rot": gyroData.yData,
-      "z_rot": gyroData.zData
-    }
-    payload = json.dumps(imu_data)
-    client.publish(topic, payload)
-    time.sleep(0.1)
+      imu_data = {
+        "x_accel": accelData.xData,
+        "y_accel": accelData.yData,
+        "z_accel": accelData.zData,
+        "x_rot": gyroData.xData,
+        "y_rot": gyroData.yData,
+        "z_rot": gyroData.zData
+      }
+      payload = json.dumps(imu_data)
+      client.publish(topic, payload)
+      time.sleep(0.1)
 except KeyboardInterrupt:
   client.loop_stop()
   client.disconnect()
