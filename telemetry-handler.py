@@ -51,7 +51,7 @@ def imu_reader():
         return accelData, gyroData
 try:
   while True:
-    imu_reader()
+    accelData, gyroData = imu_reader()
     imu_data = {
       "x_accel": accelData.xData,
       "y_accel": accelData.yData,
