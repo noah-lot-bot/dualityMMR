@@ -49,9 +49,12 @@ def imu_reader():
     time.sleep(0.100)
     return accelData, gyroData
   return None, None
+  
 try:
   while True:
-    accelData, gyroData = imu_reader()
+    reading = imu_reader()
+    if reading[0] is not None:
+      accelData, gyroData = reading
     imu_data = {
       "x_accel": accelData.xData,
       "y_accel": accelData.yData,
