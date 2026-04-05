@@ -43,13 +43,12 @@ def imu_reader():
     myIsm.set_gyro_filter_lp1()
     myIsm.set_gyro_lp1_bandwidth(myIsm.kBwMedium)
 
-    while True:
-      if myIsm.check_status():
-        accelData = myIsm.get_accel()
-        gyroData = myIsm.get_gyro()
-        time.sleep(0.100)
-        return accelData, gyroData
-      return None, None
+  if myIsm.check_status():
+    accelData = myIsm.get_accel()
+    gyroData = myIsm.get_gyro()
+    time.sleep(0.100)
+    return accelData, gyroData
+  return None, None
 try:
   while True:
     accelData, gyroData = imu_reader()
