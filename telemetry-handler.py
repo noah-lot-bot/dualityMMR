@@ -51,21 +51,21 @@ def imu_reader():
         return accelData, gyroData
 try:
   while True:
-    imu_reader()
-        imu_data = {
-          "x_accel": accelData.xData,
-          "y_accel": accelData.yData,
-          "z_accel": accelData.zData,
-          "x_rot": gyroData.xData,
-          "y_rot": gyroData.yData,
-          "z_rot": gyroData.zData
-        }
-        payload = json.dumps(imu_data)
-        client.publish(topic, payload)
-        time.sleep(0.1)
-  except KeyboardInterrupt:
-    client.loop_stop()
-    client.disconnect()
+  imu_reader()
+  imu_data = {
+    "x_accel": accelData.xData,
+    "y_accel": accelData.yData,
+    "z_accel": accelData.zData,
+    "x_rot": gyroData.xData,
+    "y_rot": gyroData.yData,
+    "z_rot": gyroData.zData
+  }
+  payload = json.dumps(imu_data)
+  client.publish(topic, payload)
+  time.sleep(0.1)
+except KeyboardInterrupt:
+  client.loop_stop()
+  client.disconnect()
     
     
 
