@@ -22,7 +22,7 @@ client.connect(broker,port,60)
 client.loop_start()
 
 # read the imu data
-def = imu_reader():
+def imu_reader():
   myIsm = qwiic_ism330dhcx.QwiicISM330DHCX()
   myIsm.begin()
   while myIsm.get_device_reset() == False:
