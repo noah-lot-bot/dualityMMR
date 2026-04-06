@@ -6,10 +6,11 @@
 import paho.mqtt.client as mqtt
 import json
 import time
+from data-handler import imu_reader
 
-broker = "10.137.166.27"
+broker = "localhost"
 port = 1883
-topic = "duality/telemetry/imu"
+topic = "duality/telemetry"
 
 # create the client
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
