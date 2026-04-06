@@ -36,7 +36,7 @@ try:
         "y_rot": gyroData.yData,
         "z_rot": gyroData.zData
     }
-      payload = json.dumps(imu_data)
+    payload = json.dumps(imu_data)
     client.publish(topic, payload)
     time.sleep(0.1)
 except KeyboardInterrupt:
