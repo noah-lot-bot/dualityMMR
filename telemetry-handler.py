@@ -6,7 +6,6 @@
 from paho.mqtt import client as mqtt
 import json
 import time
-import qwiic_ism330dhcx
 
 broker = "10.137.166.27"
 port = 1883
