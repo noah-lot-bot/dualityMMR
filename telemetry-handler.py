@@ -23,6 +23,7 @@ def on_message(client, userdata, msg):
 client.connect(broker,port,60)
 client.on_message = on_message
 client.loop_start()
+time.sleep(1)
   
 try:
   while True:
