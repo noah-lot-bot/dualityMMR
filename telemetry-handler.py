@@ -16,9 +16,9 @@ topic = "duality/telemetry"
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 
 # subscribe the client to messages in case of disconnect
-def on_connect(client, userdata, flags, reason_code, properties):
-  client.subscribe("$SYS/#)
-                   
+def on_message(client, userdata, msg):
+    print(msg.topic+" "+str(msg.payload))
+
 # connect and start the client
 client.connect(broker,port,60)
 client.on_connect = on_connect
