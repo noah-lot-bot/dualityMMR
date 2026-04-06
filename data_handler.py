@@ -26,4 +26,3 @@ def imu_reader():
     gyroData = myIsm.get_gyro()
     time.sleep(0.100)
     return accelData, gyroData
-  return None, None
