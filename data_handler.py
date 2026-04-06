@@ -40,8 +40,6 @@ def imu_reader():
 	while True:
 		if myIsm.check_status():
 			accelData = myIsm.get_accel()
-			print("Accel X: %f, Y: %f, Z: %f " % (accelData.xData, accelData.yData, accelData.zData), end='')
 			gyroData = myIsm.get_gyro()
-			print("Gyro X: %f, Y: %f, Z: %f" % (gyroData.xData, gyroData.yData, gyroData.zData))
-      	return accelData, gyroData
-		time.sleep(0.100)
+			return accelData, gyroData
+			time.sleep(0.100)
