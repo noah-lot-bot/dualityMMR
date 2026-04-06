@@ -37,6 +37,7 @@ try:
         "y_rot": gyroData.yData,
         "z_rot": gyroData.zData
     }
+    print("x_accel")
     payload = json.dumps(imu_data)
     client.publish(topic, payload)
     time.sleep(0.1)
