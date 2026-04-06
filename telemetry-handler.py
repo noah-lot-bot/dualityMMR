@@ -8,7 +8,7 @@ import json
 import time
 from data_handler import imu_reader
 
-broker = "localhost"
+broker = "broker.emqx.io"
 port = 1883
 topic = "duality/telemetry"
 
