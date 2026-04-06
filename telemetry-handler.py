@@ -27,11 +27,8 @@ time.sleep(1)
   
 try:
   while True:
-    print("test 0")
     reading = imu_reader()
-    print("test 1")
     accelData, gyroData = reading
-    print("test 2")
     imu_data = {
         "x_accel": accelData.xData,
         "y_accel": accelData.yData,
@@ -40,7 +37,6 @@ try:
         "y_rot": gyroData.yData,
         "z_rot": gyroData.zData
     }
-    print("test_3")
     payload = json.dumps(imu_data)
     client.publish(topic, payload)
     time.sleep(0.1)
