@@ -8,7 +8,7 @@ import json
 import time
 from data_handler import imu_reader
 
-broker = "mosquitto"
+broker = "10.137.166.27"
 port = 1883
 topic = "duality/telemetry"
 
