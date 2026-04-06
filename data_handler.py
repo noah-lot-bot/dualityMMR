@@ -3,7 +3,6 @@ import sys
 import time
 
 def imu_reader():
-	print("\nQwiic ISM330DHCX Example 1 - Basic Readings\n")
 
 	myIsm = qwiic_ism330dhcx.QwiicISM330DHCX()
 
