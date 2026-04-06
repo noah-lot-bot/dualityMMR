@@ -7,7 +7,7 @@ myIsm = qwiic_ism330dhcx.QwiicISM330DHCX()
 if myIsm.is_connected() == False:
 	print("The device isn't connected to the system. Please check your connection", \
 			file=sys.stderr)
-	return
+	sys.exit(1)
 
 myIsm.begin()
 myIsm.device_reset()
