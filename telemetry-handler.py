@@ -3,7 +3,7 @@
 # vibration: fft of accel data
 # zero moment point control
 # pull voltage data? and cpu usage. should be easy enough
-from paho.mqtt import client as mqtt
+import paho.mqtt.client as mqtt
 import json
 import time
 
@@ -12,12 +12,15 @@ port = 1883
 topic = "duality/telemetry/imu"
 
 # create the client
-client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2)
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 
-# connect the client to the broker (Docker container)
+# subscribe the client to messages in case of disconnect
+def on_connect(client, userdata, flags, reason_code, properties):
+  client.subscribe("$SYS/#)
+                   
+# connect and start the client
 client.connect(broker,port,60)
-
-# start the messaging client
+client.on_connect = on_connect
 client.loop_start()
   
 try:
