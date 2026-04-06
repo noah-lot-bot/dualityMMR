@@ -21,7 +21,7 @@ def on_message(client, userdata, msg):
 
 # connect and start the client
 client.connect(broker,port,60)
-client.on_connect = on_connect
+client.on_message = on_message
 client.loop_start()
   
 try:
