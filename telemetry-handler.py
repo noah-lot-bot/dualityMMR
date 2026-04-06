@@ -6,7 +6,7 @@
 import paho.mqtt.client as mqtt
 import json
 import time
-from data-handler import imu_reader
+from data_handler import imu_reader
 
 broker = "localhost"
 port = 1883
