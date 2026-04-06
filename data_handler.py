@@ -16,10 +16,8 @@ def imu_reader():
 	myIsm.device_reset()
 
 	while myIsm.get_device_reset() == False:
-		time.sleep(1)
-
-	print("Reset.")
-	print("Applying settings.")
+	time.sleep(1)
+		
 	time.sleep(0.100)
 
 	myIsm.set_device_config()
