@@ -40,19 +40,25 @@ async def rotate_servo(servo_location, angle, period):
     kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
 
+# awaitable wheel speed set
+async def set_wheel_speed(wheel_location, speed):
+  kit.continuous_servo[wheel_location].throttle = speed
 
 # the first step in the automatic gait demo is to set all legs to their neutral positions
 async def set_neutral(): # WIP
   await asyncio.gather(
     kit.servo[front_left_leg.knee_location].angle = None,
     kit.servo[front_left_leg.hip_location].angle = None
+  )
+
+# define the safe shutdown function (WIP)
 
 async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # WIP : tune period values to make gait faster. This is x8 slower than the speed the gait should go to make prototype rover move at 0.02 m/s, so full rover would go 0.08 m/s
   # front left
   await rotate_servo(front_left_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3)
+    await rotate_servo(front_left_leg.hip_location, 30, 3),
     await rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
@@ -64,7 +70,7 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # back right
   await rotate_servo(back_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3)
+    await rotate_servo(front_left_leg.hip_location, 30, 3),
     await rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
@@ -76,7 +82,7 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # front right
   await rotate_servo(front_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3)
+    await rotate_servo(front_left_leg.hip_location, 30, 3),
     await rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
@@ -88,7 +94,7 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # back left
   await rotate_servo(front_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3)
+    await rotate_servo(front_left_leg.hip_location, 30, 3),
     await rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
@@ -97,8 +103,6 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
     rotate_servo(front_right_leg.hip_location, 7.5, 4),
     rotate_servo(back_right_leg.hip_location, 7.5, 4)
   )
-
-
 
 async def upslope_partial_lower_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # front left
@@ -158,8 +162,6 @@ async def upslope_partial_lower_gait(front_left_leg, front_right_leg, back_left_
     rotate_servo(back_right_leg.hip_location, 10,)
   )
 
-
-
 async def upslope_downslope_full_lower_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # lower
   await asyncio.gather( 
@@ -207,3 +209,20 @@ async def upslope_downslope_full_lower_gait(front_left_leg, front_right_leg, bac
     rotate_servo(front_right_leg.hip_location, 20,),
     rotate_servo(back_right_leg.hip_location, 20,)
   )
+
+async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, 1),
+    set_wheel_speed(back_left_leg.wheel_location, 1),
+    set_wheel_speed(front_right_leg.wheel_location, -1),
+    set_wheel_speed(back_right_leg.wheel_location, -1)
+  )
+
+async def turn_left_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, -1),
+    set_wheel_speed(back_left_leg.wheel_location, 1),
+    set_wheel_speed(front_right_leg.wheel_location, 1),
+    set_wheel_speed(back_right_leg.wheel_location, 1)
+  )
+
