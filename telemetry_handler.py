@@ -26,8 +26,7 @@ client.loop_start()
   
 try:
   while True:
-    reading = imu_reader()
-    accelData, gyroData = reading
+    accelData, gyroData = imu_reader()
     imu_data = {
         "x_accel": accelData.xData,
         "y_accel": accelData.yData,
