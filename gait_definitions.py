@@ -58,8 +58,8 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # front left
   await rotate_servo(front_left_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3),
-    await rotate_servo(front_left_leg.knee_location, -30, 4)
+    rotate_servo(front_left_leg.hip_location, 30, 3),
+    rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -7.5, 4),
@@ -70,8 +70,8 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # back right
   await rotate_servo(back_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3),
-    await rotate_servo(front_left_leg.knee_location, -30, 4)
+    rotate_servo(front_left_leg.hip_location, 30, 3),
+    rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -7.5, 4),
@@ -82,8 +82,8 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # front right
   await rotate_servo(front_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3),
-    await rotate_servo(front_left_leg.knee_location, -30, 4)
+    rotate_servo(front_left_leg.hip_location, 30, 3),
+    rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -7.5, 4),
@@ -94,8 +94,8 @@ async def flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_
   # back left
   await rotate_servo(front_right_leg.knee_location, 30, 2)
   await asyncio.gather(
-    await rotate_servo(front_left_leg.hip_location, 30, 3),
-    await rotate_servo(front_left_leg.knee_location, -30, 4)
+    rotate_servo(front_left_leg.hip_location, 30, 3),
+    rotate_servo(front_left_leg.knee_location, -30, 4)
   )
   await asyncio.gather( 
     rotate_servo(front_left_leg.hip_location, -7.5, 4),
