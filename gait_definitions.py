@@ -20,7 +20,7 @@ class leg:
     self.knee_neutral = knee_neutral
 
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
-front_left_leg = leg(0,1,2,8,105,28,)
+front_left_leg = leg(0,1,2,8,105,28,60,120,85)
 front_right_leg = leg(3,4,5,45,142,124,)
 back_left_leg = leg(6,7,8,38,135,115,)
 back_right_leg = leg(9,10,11,40,138,59,)
