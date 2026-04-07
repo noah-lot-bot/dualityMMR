@@ -8,7 +8,7 @@ import json
 import time
 from data_handler import imu_reader
 
-broker = "10.137.166.27"
+broker = string(input("Input the broker address (IP) of the Pi: "))
 port = 1883
 topic = "duality/telemetry"
 
@@ -23,7 +23,6 @@ def on_message(client, userdata, msg):
 client.connect(broker,port,60)
 client.on_message = on_message
 client.loop_start()
-time.sleep(1)
   
 try:
   while True:
