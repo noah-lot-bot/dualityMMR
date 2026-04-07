@@ -1,31 +1,30 @@
 import asyncio 
 import sshkeyboard
-from gait_definitions import flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral 
+from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg) 
 
-def key_pressed(key):
+async def key_pressed(key):
   try: 
     if key == "w":
-      flat_ground_gait()
+      await flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "d":
-      turn_right_gait()
+      await turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "a":
-      turn_left_gait()
+      await turn_left_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   except AttributeError:
     if key == "esc":
-      rover_shutdown()
+      await rover_shutdown(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
       return False
 
-def key_released(key):
-  global walk_forward, walk_backward, knee_up, knee_down, hip_forward, hip_backward
+async def key_released(key):
   try: 
     if key == "w":
-      set_neutral()
+      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "s":
-      set_neutral()
+      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "a"
-      set_neutral()
+      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "d":
-      set_neutral()
+      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   except AttributeError:
     pass 
 
@@ -33,4 +32,4 @@ def key_released(key):
 try:
   listen_keyboard(on_press = key_pressed, on_release = key_released,)
 finally:
-  rover_shutdown()
+  await rover_shutdown(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
