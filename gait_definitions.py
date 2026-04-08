@@ -46,6 +46,12 @@ async def set_wheel_speed(wheel_location, speed):
 
 # the first step in the automatic gait demo is to set all legs to their neutral positions
 async def set_neutral(): # WIP
+  await asyncio(
+    set_wheel_speed(front_left_leg.wheel_location, 0.1),
+    set_wheel_speed(front_right_leg.wheel_location, 0.1),
+    set_wheel_speed(back_left_leg.wheel_location, 0.1),
+    set_wheel_speed(back_right_leg.wheel_location, 0.1)
+  )
   await asyncio.gather(
     rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral),
     rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral),
@@ -222,23 +228,23 @@ async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_r
   await asyncio.gather(
     set_wheel_speed(front_left_leg.wheel_location, 1),
     set_wheel_speed(back_left_leg.wheel_location, 1),
-    set_wheel_speed(front_right_leg.wheel_location, -1),
-    set_wheel_speed(back_right_leg.wheel_location, -1)
+    set_wheel_speed(front_right_leg.wheel_location, 1),
+    set_wheel_speed(back_right_leg.wheel_location, 1)
   )
 
 async def turn_left_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   await asyncio.gather(
     set_wheel_speed(front_left_leg.wheel_location, -1),
     set_wheel_speed(back_left_leg.wheel_location, -1),
-    set_wheel_speed(front_right_leg.wheel_location, 1),
-    set_wheel_speed(back_right_leg.wheel_location, 1)
+    set_wheel_speed(front_right_leg.wheel_location, -1),
+    set_wheel_speed(back_right_leg.wheel_location, -1)
   )
 
 async def roll_forward_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   await asyncio.gather(
     set_wheel_speed(front_left_leg.wheel_location, 1),
     set_wheel_speed(back_left_leg.wheel_location, 1),
-    set_wheel_speed(front_right_leg.wheel_location, 1),
-    set_wheel_speed(back_right_leg.wheel_location, 1)
+    set_wheel_speed(front_right_leg.wheel_location, -1),
+    set_wheel_speed(back_right_leg.wheel_location, -1)
 )
 
