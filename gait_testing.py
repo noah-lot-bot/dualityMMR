@@ -1,6 +1,6 @@
 import asyncio 
 from sshkeyboard import listen_keyboard, stop_listening
-from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait) 
+from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait, roll_backward_gait) 
 
 asyncio.run(set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg))
 
