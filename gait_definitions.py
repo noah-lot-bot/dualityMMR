@@ -2,6 +2,7 @@ from adafruit_servokit import ServoKit
 import sshkeyboard
 import asyncio
 import time
+import math
 
 # establish the pwm board
 kit = ServoKit(channels=16)
