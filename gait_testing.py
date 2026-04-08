@@ -1,6 +1,8 @@
 import asyncio 
 import sshkeyboard
-from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg) 
+from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait) 
+
+await set_neutral()
 
 async def key_pressed(key):
   try: 
@@ -12,7 +14,7 @@ async def key_pressed(key):
       await turn_left_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   except AttributeError:
     if key == "esc":
-      await rover_shutdown(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
       return False
 
 async def key_released(key):
@@ -32,4 +34,4 @@ async def key_released(key):
 try:
   listen_keyboard(on_press = key_pressed, on_release = key_released,)
 finally:
-  await rover_shutdown(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+  await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
