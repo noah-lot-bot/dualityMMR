@@ -28,21 +28,21 @@ back_left_leg = leg(11,10,9, 30,120,105, 70,133,107)
 back_right_leg = leg(4,5,6, 28,127,48, 60,135,92)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
-  if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min)
+  if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min):
     return servo_pos_init
-  elif location == front_right_leg.hip_location and (servo_pos_curr>front_right_leg.hip_max or servo_pos_curr<front_right_leg.hip_min)
+  elif location == front_right_leg.hip_location and (servo_pos_curr>front_right_leg.hip_max or servo_pos_curr<front_right_leg.hip_min):
     return servo_pos_init
-  elif location == back_left_leg.hip_location and (servo_pos_curr>back_left_leg.hip_max or servo_pos_curr<back_left_leg.hip_min)
+  elif location == back_left_leg.hip_location and (servo_pos_curr>back_left_leg.hip_max or servo_pos_curr<back_left_leg.hip_min):
     return servo_pos_init
-  elif location == back_right_leg.hip_location and (servo_pos_curr>back_right_leg.hip_max or servo_pos_curr<back_right_leg.hip_min)
+  elif location == back_right_leg.hip_location and (servo_pos_curr>back_right_leg.hip_max or servo_pos_curr<back_right_leg.hip_min):
     return servo_pos_init
-  elif location == front_left_leg.knee_location and (servo_pos_curr>front_left_leg.knee_max or servo_pos_curr<front_left_leg.knee_min)
+  elif location == front_left_leg.knee_location and (servo_pos_curr>front_left_leg.knee_max or servo_pos_curr<front_left_leg.knee_min):
     return servo_pos_init
-  elif location == front_right_leg.knee_location and (servo_pos_curr>front_right_leg.knee_max or servo_pos_curr<front_right_leg.knee_min)
+  elif location == front_right_leg.knee_location and (servo_pos_curr>front_right_leg.knee_max or servo_pos_curr<front_right_leg.knee_min):
     return servo_pos_init
-  elif location == back_left_leg.knee_location and (servo_pos_curr>back_left_leg.knee_max or servo_pos_curr<back_left_leg.knee_min)
+  elif location == back_left_leg.knee_location and (servo_pos_curr>back_left_leg.knee_max or servo_pos_curr<back_left_leg.knee_min):
     return servo_pos_init
-  elif location == back_right_leg.knee_location and (servo_pos_curr>back_right_leg.knee_max or servo_pos_curr<back_right_leg.knee_min)
+  elif location == back_right_leg.knee_location and (servo_pos_curr>back_right_leg.knee_max or servo_pos_curr<back_right_leg.knee_min):
     return servo_pos_init
   else
     return servo_pos_curr
