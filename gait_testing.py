@@ -5,7 +5,7 @@ from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait,
 async def key_pressed(key):
   try: 
     if key == "w":
-      await flat_ground_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+      await roll_forward_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "d":
       await turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "a":
