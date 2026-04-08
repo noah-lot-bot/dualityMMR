@@ -2,7 +2,7 @@ import asyncio
 from sshkeyboard import listen_keyboard, stop_listening
 from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait) 
 
-set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+asyncio.run(set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg))
 
 async def key_pressed(key):
   try: 
@@ -34,4 +34,4 @@ async def key_released(key):
 try:
   listen_keyboard(on_press = key_pressed, on_release = key_released,)
 finally:
-  set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+  asyncio.run(set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg))
