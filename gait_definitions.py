@@ -27,7 +27,7 @@ back_right_leg = leg(4,5,6, 28,127,48, 60,135,92)
 
 # define a function to rotate a servo from an initial to final position, accept negative angles, smooth motion
 async def rotate_servo(servo_location, angle, period):
-  servo_pos_init = kit.servo[location].angle
+  servo_pos_init = kit.servo[servo_location].angle
   servo_pos_fin = servo_pos_init + angle
   time_init = time.time()
   while True:
