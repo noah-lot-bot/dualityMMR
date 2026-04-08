@@ -34,4 +34,4 @@ async def key_released(key):
 try:
   listen_keyboard(on_press = key_pressed, on_release = key_released,)
 finally:
-  await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+  set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
