@@ -21,7 +21,7 @@ class leg:
 
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
 front_left_leg = leg(13,14,12, 0,95,21, 60,130,85)
-front_right_leg = leg(2,1,0, 45,142,124, 0,0,0)
+front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
 back_left_leg = leg(11,10,9, 30,120,105, 70,133,107)
 back_right_leg = leg(4,5,6, 28,127,48, 60,135,92)
 
