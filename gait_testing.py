@@ -23,7 +23,7 @@ async def key_released(key):
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "s":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
-    elif key == "a"
+    elif key == "a":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "d":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
