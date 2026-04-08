@@ -1,6 +1,6 @@
 import asyncio 
 from sshkeyboard import listen_keyboard, stop_listening
-from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait, roll_backward_gait, raise_chassis_gait) 
+from gait_definitions import (flat_ground_gait, turn_right_gait, turn_left_gait, set_neutral, front_left_leg, front_right_leg, back_left_leg, back_right_leg, roll_forward_gait, roll_backward_gait, raise_chassis_gait, lower_chassis_gait) 
 
 asyncio.run(set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg))
 
@@ -16,6 +16,8 @@ async def key_pressed(key):
       await turn_left_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "e":
       await raise_chassis_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+    elif key == "q":
+      await lower_chassis_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   except AttributeError:
     if key == "esc":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
