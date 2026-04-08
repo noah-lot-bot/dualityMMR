@@ -27,6 +27,26 @@ front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
 back_left_leg = leg(11,10,9, 30,120,105, 70,133,107)
 back_right_leg = leg(4,5,6, 28,127,48, 60,135,92)
 
+async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
+  if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min)
+    return servo_pos_init
+  elif location == front_right_leg.hip_location and (servo_pos_curr>front_right_leg.hip_max or servo_pos_curr<front_right_leg.hip_min)
+    return servo_pos_init
+  elif location == back_left_leg.hip_location and (servo_pos_curr>back_left_leg.hip_max or servo_pos_curr<back_left_leg.hip_min)
+    return servo_pos_init
+  elif location == back_right_leg.hip_location and (servo_pos_curr>back_right_leg.hip_max or servo_pos_curr<back_right_leg.hip_min)
+    return servo_pos_init
+  elif location == front_left_leg.knee_location and (servo_pos_curr>front_left_leg.knee_max or servo_pos_curr<front_left_leg.knee_min)
+    return servo_pos_init
+  elif location == front_right_leg.knee_location and (servo_pos_curr>front_right_leg.knee_max or servo_pos_curr<front_right_leg.knee_min)
+    return servo_pos_init
+  elif location == back_left_leg.knee_location and (servo_pos_curr>back_left_leg.knee_max or servo_pos_curr<back_left_leg.knee_min)
+    return servo_pos_init
+  elif location == back_right_leg.knee_location and (servo_pos_curr>back_right_leg.knee_max or servo_pos_curr<back_right_leg.knee_min)
+    return servo_pos_init
+  else
+    return servo_pos_curr
+
 # define a function to rotate a servo from an initial to final position, accept negative angles, smooth motion
 async def rotate_servo(location, angle, period):
   servo_pos_init = kit.servo[location].angle
@@ -39,6 +59,7 @@ async def rotate_servo(location, angle, period):
     if progress >= 1:
       break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
+    servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
 
@@ -260,4 +281,8 @@ async def roll_backward_gait(front_left_leg, front_right_leg, back_left_leg, bac
     set_wheel_speed(front_right_leg.wheel_location, 1),
     set_wheel_speed(back_right_leg.wheel_location, 1)
 )
+
+async def raise_chassis_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  await asyncio.gather(
+    rotate_servo(front_left_leg.knee_location, 5, 1
 
