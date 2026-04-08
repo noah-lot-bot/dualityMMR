@@ -44,7 +44,7 @@ async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
     return servo_pos_init
   elif location == back_right_leg.knee_location and (servo_pos_curr>back_right_leg.knee_max or servo_pos_curr<back_right_leg.knee_min):
     return servo_pos_init
-  else
+  else:
     return servo_pos_curr
 
 # define a function to rotate a servo from an initial to final position, accept negative angles, smooth motion
