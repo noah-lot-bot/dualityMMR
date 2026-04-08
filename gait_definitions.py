@@ -53,16 +53,16 @@ async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right
     set_wheel_speed(back_right_leg.wheel_location, 0.1)
   )
   await asyncio.gather(
-    rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral, 2),
-    rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral, 2),
-    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral, 2),
-    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral, 2)
+    kit.servo[front_left_leg.knee_location].angle = front_left_leg.knee_neutral,
+    kit.servo[front_right_leg.knee_location].angle = front_right_leg.knee_neutral,
+    kit.servo[back_left_leg.knee_location].angle = back_left_leg.knee_neutral,
+    kit.servo[back_right_leg.knee_location].angle = back_right_leg.knee_neutral,
   )
   await asyncio.gather(
-    rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral, 2),
-    rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral, 2),
-    rotate_servo(back_left_leg.knee_location, back_left_leg.knee_neutral, 2),
-    rotate_servo(back_right_leg.knee_location, back_right_leg.knee_neutral, 2)
+    kit.servo[front_left_leg.hip_location].angle = front_left_leg.hip_neutral,
+    kit.servo[front_right_leg.hip_location].angle = front_right_leg.hip_neutral,
+    kit.servo[back_left_leg.hip_location].angle = back_left_leg.hip_neutral,
+    kit.servo[back_right_leg.hip_location].angle = back_right_leg.hip_neutral,
   )
 
 # define the safe shutdown function (WIP)
