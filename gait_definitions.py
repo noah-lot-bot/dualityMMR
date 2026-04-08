@@ -7,7 +7,7 @@ kit = ServoKit(channels=16)
 
 # i do not know the neutral positions of each servo so we cannot count on those rn, will update later
 class leg:
-  wheel_stop = 0.2 # should be constant across all legs (WIP)
+  wheel_stop = 0.1 # should be constant across all legs (WIP)
   def __init__(self, hip_location, knee_location, wheel_location, hip_min, hip_max, hip_neutral, knee_min, knee_max, knee_neutral):
     self.hip_location = hip_location
     self.knee_location = knee_location
@@ -20,10 +20,10 @@ class leg:
     self.knee_neutral = knee_neutral
 
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
-front_left_leg = leg(0,1,2,8,105,28,60,120,85)
-front_right_leg = leg(3,4,5,45,142,124,)
-back_left_leg = leg(6,7,8,38,135,115,)
-back_right_leg = leg(9,10,11,40,138,59,)
+front_left_leg = leg(13,14,12,0,95,21,60,130,85)
+front_right_leg = leg(2,1,0,45,142,124,)
+back_left_leg = leg(11,10,9,29,125,105,)
+back_right_leg = leg(4,5,6,40,138,59,)
 
 # define a function to rotate a servo from an initial to final position, accept negative angles, smooth motion
 async def rotate_servo(servo_location, angle, period):
@@ -47,8 +47,16 @@ async def set_wheel_speed(wheel_location, speed):
 # the first step in the automatic gait demo is to set all legs to their neutral positions
 async def set_neutral(): # WIP
   await asyncio.gather(
-    kit.servo[front_left_leg.knee_location].angle = None,
-    kit.servo[front_left_leg.hip_location].angle = None
+    rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral),
+    rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral),
+    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral),
+    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral)
+  )
+  await asyncio.gather(
+    rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral),
+    rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral),
+    rotate_servo(back_left_leg.knee_location, back_left_leg.knee_neutral),
+    rotate_servo(back_right_leg.knee_location, back_right_leg.knee_neutral)
   )
 
 # define the safe shutdown function (WIP)
