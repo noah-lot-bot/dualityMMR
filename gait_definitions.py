@@ -45,7 +45,7 @@ async def set_wheel_speed(wheel_location, speed):
   kit.continuous_servo[wheel_location].throttle = speed
 
 # the first step in the automatic gait demo is to set all legs to their neutral positions
-async def set_neutral(): # WIP
+async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg): # WIP
   await asyncio(
     set_wheel_speed(front_left_leg.wheel_location, 0.1),
     set_wheel_speed(front_right_leg.wheel_location, 0.1),
