@@ -39,7 +39,7 @@ async def key_released(key):
 
 # start the listener
 async def main():
-  await asyncio.gather(listen_keyboard(on_press = key_pressed, on_release = key_released,),
+  await asyncio.gather(listen_keyboard_manual(on_press = key_pressed, on_release = key_released,),
                        telemetry_handler()
                       )
 if __name__=="__main__":
