@@ -34,7 +34,7 @@ try:
     payload = json.dumps(imu_data)
     client.publish(topic, payload)
     time.sleep(0.1)
-except KeyboardInterrupt:
+finally:
   client.loop_stop()
   client.disconnect()
     
