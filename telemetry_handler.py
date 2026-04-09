@@ -35,7 +35,7 @@ async def telemetry_handler():
       }
       payload = json.dumps(imu_data)
       client.publish(topic, payload)
-      time.sleep(0.1)
+      await asyncio.sleep(0.1)
   finally:
     client.loop_stop()
     client.disconnect()
