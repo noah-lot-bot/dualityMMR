@@ -24,8 +24,8 @@ class leg:
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
 front_left_leg = leg(13,14,12, 0,95,21, 59,125,84)
 front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
-back_left_leg = leg(11,10,9, 47,140,120, 20,85,60)
-back_right_leg = leg(4,5,6, 28,127,48, 60,135,92)
+back_left_leg = leg(11,10,9, 47,140,120, 25,85,60)
+back_right_leg = leg(4,5,6, 28,127,48, 60,130,92)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
   if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min):
@@ -160,12 +160,12 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   # back right crawl
   await set_wheel_speed(back_left_leg.wheel_location, -0.5)
   await wait_for_user()
-  await rotate_servo(back_left_leg.hip_location, back_left_leg.hip_min-back_left_leg.hip_neutral, 3) #!!! too far
+  await rotate_servo(back_left_leg.hip_location, back_left_leg.hip_min-back_left_leg.hip_neutral, 3) 
   await wait_for_user()
   await set_wheel_speed(back_left_leg.wheel_location, 0.1)
   await wait_for_user()
   
-  await rotate_servo(back_right_leg.knee_location, back_right_leg.knee_max-back_right_leg.knee_neutral, 2)
+  await rotate_servo(back_right_leg.knee_location, back_right_leg.knee_max-back_right_leg.knee_neutral, 2) #too far
   await wait_for_user()
   await rotate_servo(back_right_leg.hip_location, back_right_leg.hip_min-back_right_leg.hip_neutral, 2) #!!! too far
   await wait_for_user()
@@ -193,7 +193,7 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await set_wheel_speed(front_left_leg.wheel_location, 0.1)
   await wait_for_user()
   
-  await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min-front_right_leg.knee_neutral-5, 2) #!!! too high
+  await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min-front_right_leg.knee_neutral, 2) #!!!
   await wait_for_user()
   await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_min-front_right_leg.hip_neutral, 2)
   await wait_for_user()
