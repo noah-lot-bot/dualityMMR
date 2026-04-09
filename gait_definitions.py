@@ -162,28 +162,32 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
 async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # lower down chassis
   await asyncio.gather(
-    rotate_servo(back_left_leg.knee_location, back_left_leg.knee_max-back_left_leg.knee_neutral, 2),
-    rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral-front_left_leg.knee_max, 2),
-    rotate_servo(back_right_leg.knee_location, back_right_leg.knee_neutral-back_right_leg.knee_max, 2),
-    rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral-front_right_leg.knee_min, 2)
+    rotate_servo(back_left_leg.knee_location, -(back_left_leg.knee_max-back_left_leg.knee_neutral), 2),
+    rotate_servo(front_left_leg.knee_location, -(front_left_leg.knee_neutral-front_left_leg.knee_max-, 2),
+    rotate_servo(back_right_leg.knee_location, -(back_right_leg.knee_neutral-back_right_leg.knee_max), 2),
+    rotate_servo(front_right_leg.knee_location, -(front_right_leg.knee_neutral-front_right_leg.knee_min), 2)
   )
   await asyncio.gather(
-    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_max-back_left_leg.hip_neutral, 2),
     rotate_servo(front_left_leg.hip_location, front_left_leg.hip_max-front_left_leg.hip_neutral, 2),
-    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_min-back_right_leg.hip_neutral, 2), #!!! too far
     rotate_servo(front_right_leg.hip_location, front_right_leg.hip_min-front_right_leg.hip_neutral, 2)
   )
   await asyncio.gather(
+    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_min-back_right_leg.hip_neutral, 2), #!!! too far
+    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_max-back_left_leg.hip_neutral, 2)
+  )
+  await asyncio.gather(
     rotate_servo(back_left_leg.knee_location, back_left_leg.knee_max-back_left_leg.knee_neutral, 2),
     rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral-front_left_leg.knee_max, 2),
     rotate_servo(back_right_leg.knee_location, back_right_leg.knee_neutral-back_right_leg.knee_max, 2),
     rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral-front_right_leg.knee_min, 2)
   )
   await asyncio.gather(
-    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_max, 2),
     rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral-front_left_leg.hip_max, 2),
-    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2),
     rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 2)
+  )
+  await asyncio.gather(
+    rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2),
+    rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_max, 2)
   )
                  
 async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
