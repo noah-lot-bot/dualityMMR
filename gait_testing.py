@@ -26,7 +26,7 @@ async def key_pressed(key):
 
 async def key_released(key):
   try: 
-    elif key == "s":
+    if key == "s":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "a":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
