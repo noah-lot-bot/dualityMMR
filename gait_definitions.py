@@ -163,8 +163,8 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
 async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # move hips backward from neutral
   await asyncio.gather(
-    rotate_servo(front_left_leg.hip_location, front_left_leg.hip_min-front_left_leg.hip_neutral, 2),
-    rotate_servo(front_right_leg.hip_location, front_right_leg.hip_max-front_right_leg.hip_neutral, 2),
+    rotate_servo(front_left_leg.hip_location, (front_left_leg.hip_min-front_left_leg.hip_neutral)/2, 2),
+    rotate_servo(front_right_leg.hip_location, (front_right_leg.hip_max-front_right_leg.hip_neutral)/2, 2),
     rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2),
     rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_max, 2)
   )
