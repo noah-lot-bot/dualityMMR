@@ -163,7 +163,7 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   # lower down chassis
   await asyncio.gather(
     rotate_servo(back_left_leg.knee_location, -(back_left_leg.knee_max-back_left_leg.knee_neutral), 2),
-    rotate_servo(front_left_leg.knee_location, -(front_left_leg.knee_neutral-front_left_leg.knee_max-, 2),
+    rotate_servo(front_left_leg.knee_location, -(front_left_leg.knee_neutral-front_left_leg.knee_max), 2),
     rotate_servo(back_right_leg.knee_location, -(back_right_leg.knee_neutral-back_right_leg.knee_max), 2),
     rotate_servo(front_right_leg.knee_location, -(front_right_leg.knee_neutral-front_right_leg.knee_min), 2)
   )
