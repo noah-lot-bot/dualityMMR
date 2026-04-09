@@ -8,7 +8,7 @@ asyncio.run(set_neutral(front_left_leg, front_right_leg, back_left_leg, back_rig
 async def key_pressed(key):
   try: 
     if key == "w":
-      await roll_forward_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+      await upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "s":
       await roll_backward_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "d":
@@ -26,8 +26,6 @@ async def key_pressed(key):
 
 async def key_released(key):
   try: 
-    if key == "w":
-      await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "s":
       await set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
     elif key == "a":
