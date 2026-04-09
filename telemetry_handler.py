@@ -8,7 +8,7 @@ import json
 import time
 from data_handler import imu_reader
 
-broker = string(input("Input the broker address (IP) of the Pi: "))
+broker = "192.168.8.157"
 port = 1883
 topic = "duality/telemetry"
 
