@@ -59,7 +59,7 @@ async def rotate_servo(location, angle, period):
     if progress >= 1:
       break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
-    servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
+    #servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
 
@@ -131,7 +131,7 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   # front left crawl
   await set_wheel_speed(front_right_leg.wheel_location, -0.5)
   await wait_for_user()
-  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 3) #!!! too small
+  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 3) #!!! wrong way
   await wait_for_user()
   await set_wheel_speed(front_right_leg.wheel_location, 0.1)
   await wait_for_user()
@@ -195,13 +195,13 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   
   await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min-front_right_leg.knee_neutral, 2) #!!! too high
   await wait_for_user()
-  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_min-front_right_leg.hip_neutral, 2) #!!! too small
+  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_min-front_right_leg.hip_neutral, 2)
   await wait_for_user()
   await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral-front_right_leg.knee_min, 2)
   await wait_for_user()
   await set_wheel_speed(front_right_leg.wheel_location, 0.5)
   await wait_for_user()
-  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_max-front_right_leg.hip_neutral, 2)
+  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 2) 
   await wait_for_user()
   await set_wheel_speed(front_right_leg.wheel_location, 0.1)
   await wait_for_user()
