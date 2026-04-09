@@ -175,7 +175,7 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await wait_for_user()
   await rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2)
   await wait_for_user()
-  await set_wheel_speed(back_left_leg.wheel_location, 0.1)
+  await set_wheel_speed(back_right_leg.wheel_location, 0.1)
   await wait_for_user()
 
   await set_wheel_speed(back_left_leg.wheel_location, 0.5)
