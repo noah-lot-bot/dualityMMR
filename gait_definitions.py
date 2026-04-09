@@ -101,7 +101,7 @@ async def wait_for_user():
 async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   # back left crawl
   await set_wheel_speed(back_right_leg.wheel_location, 0.5)
-  await rotate_servo(back_right_leg.hip_location, back_right_leg.hip_max-back_right_leg.hip_neutral, 3)
+  await rotate_servo(back_right_leg.hip_location, (back_right_leg.hip_max-back_right_leg.hip_neutral)/2, 3)
   await set_wheel_speed(back_right_leg.wheel_location, 0.1)
   
   await rotate_servo(back_left_leg.knee_location, back_left_leg.knee_neutral-back_left_leg.knee_max, 2)
@@ -111,12 +111,12 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_max, 2)
   
   await set_wheel_speed(back_right_leg.wheel_location, -0.5)
-  await rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_max, 3)
+  await rotate_servo(back_right_leg.hip_location, (back_right_leg.hip_neutral-back_right_leg.hip_max)/2, 3)
   await set_wheel_speed(back_right_leg.wheel_location, 0.1)
 
   # front left crawl
   await set_wheel_speed(front_right_leg.wheel_location, -0.5)
-  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_min-front_right_leg.hip_neutral, 3) 
+  await rotate_servo(front_right_leg.hip_location, (front_right_leg.hip_min-front_right_leg.hip_neutral)/2, 3) 
   await set_wheel_speed(front_right_leg.wheel_location, 0.1)
   
   await rotate_servo(front_left_leg.knee_location, front_left_leg.knee_max-front_left_leg.knee_neutral, 2)
@@ -126,12 +126,12 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral-front_left_leg.hip_max, 2)
 
   await set_wheel_speed(front_right_leg.wheel_location, 0.5)
-  await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 3)
+  await rotate_servo(front_right_leg.hip_location, (front_right_leg.hip_neutral-front_right_leg.hip_min)/2, 3)
   await set_wheel_speed(front_right_leg.wheel_location, 0.1)
 
   # back right crawl
   await set_wheel_speed(back_left_leg.wheel_location, -0.5)
-  await rotate_servo(back_left_leg.hip_location, back_left_leg.hip_min-back_left_leg.hip_neutral, 3) 
+  await rotate_servo(back_left_leg.hip_location, (back_left_leg.hip_min-back_left_leg.hip_neutral)/2, 3) 
   await set_wheel_speed(back_left_leg.wheel_location, 0.1)
   
   await rotate_servo(back_right_leg.knee_location, back_right_leg.knee_max-back_right_leg.knee_neutral, 2) #too far
@@ -141,12 +141,12 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2)
 
   await set_wheel_speed(back_left_leg.wheel_location, 0.5)
-  await rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_min, 3)
+  await rotate_servo(back_left_leg.hip_location, (back_left_leg.hip_neutral-back_left_leg.hip_min)/2, 3)
   await set_wheel_speed(back_left_leg.wheel_location, 0.1)
 
   # front right crawl
   await set_wheel_speed(front_left_leg.wheel_location, 0.5)
-  await rotate_servo(front_left_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 3)
+  await rotate_servo(front_left_leg.hip_location, (front_right_leg.hip_neutral-front_right_leg.hip_min)/2, 3)
   await set_wheel_speed(front_left_leg.wheel_location, 0.1)
   
   await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min-front_right_leg.knee_neutral, 2) #!!!
@@ -156,7 +156,7 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_min, 2) 
 
   await set_wheel_speed(front_left_leg.wheel_location, -0.5)
-  await rotate_servo(front_left_leg.hip_location, front_left_leg.hip_neutral-front_left_leg.hip_max, 3)
+  await rotate_servo(front_left_leg.hip_location, (front_left_leg.hip_neutral-front_left_leg.hip_max)/2, 3)
   await set_wheel_speed(front_left_leg.wheel_location, 0.1)
 
 async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
