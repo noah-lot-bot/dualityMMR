@@ -160,16 +160,14 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await set_wheel_speed(front_left_leg.wheel_location, 0.1)
 
 async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
-  # move hips forward
-  await wait_for_user()
+  # move hips backward from neutral
   await asyncio.gather(
-    rotate_servo(front_left_leg.hip_location, (front_left_leg.hip_neutral-front_left_leg.hip_max)/2, 2),
-    rotate_servo(front_right_leg.hip_location, (front_right_leg.hip_neutral-front_right_leg.hip_min)/2, 2),
+    rotate_servo(front_left_leg.hip_location, front_left_leg.hip_min-front_left_leg.hip_neutral, 2),
+    rotate_servo(front_right_leg.hip_location, front_right_leg.hip_max-front_right_leg.hip_neutral, 2),
     rotate_servo(back_right_leg.hip_location, back_right_leg.hip_neutral-back_right_leg.hip_min, 2),
     rotate_servo(back_left_leg.hip_location, back_left_leg.hip_neutral-back_left_leg.hip_max, 2)
   )
   # lower body
-  await wait_for_user
   await asyncio.gather(
     rotate_servo(back_left_leg.knee_location, -(back_left_leg.knee_max-back_left_leg.knee_neutral), 2),
     rotate_servo(front_left_leg.knee_location, -(front_left_leg.knee_neutral-front_left_leg.knee_max), 2),
@@ -177,7 +175,6 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
     rotate_servo(front_right_leg.knee_location, -(front_right_leg.knee_neutral-front_right_leg.knee_min), 2)
   )
   # move hips forward
-  await wait_for_user
   await asyncio.gather(
     rotate_servo(front_left_leg.hip_location, (front_left_leg.hip_max-front_left_leg.hip_neutral)/2, 2),
     rotate_servo(front_right_leg.hip_location, (front_right_leg.hip_min-front_right_leg.hip_neutral)/2, 2),
@@ -185,7 +182,6 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
     rotate_servo(back_left_leg.hip_location, back_left_leg.hip_max-back_left_leg.hip_neutral, 2)
   )
   # raise body
-  await wait_for_user
   await asyncio.gather(
     rotate_servo(back_left_leg.knee_location, back_left_leg.knee_max-back_left_leg.knee_neutral, 2),
     rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral-front_left_leg.knee_max, 2),
