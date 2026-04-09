@@ -200,16 +200,12 @@ async def roll_backward_gait(front_left_leg, front_right_leg, back_left_leg, bac
 async def raise_chassis_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   await asyncio.gather(
     rotate_servo(front_left_leg.knee_location, 5, 1),
-    rotate_servo(front_right_leg.knee_location, -5, 1),
-    rotate_servo(back_left_leg.knee_location, -5, 1),
     rotate_servo(back_right_leg.knee_location, 5, 1)
 )
 
 async def lower_chassis_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
   await asyncio.gather(
     rotate_servo(front_left_leg.knee_location, -5, 1),
-    rotate_servo(front_right_leg.knee_location, 5, 1),
-    rotate_servo(back_left_leg.knee_location, 5, 1),
     rotate_servo(back_right_leg.knee_location, -5, 1)
 )
     
