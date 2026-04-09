@@ -59,6 +59,7 @@ async def rotate_servo(location, angle, period):
     if progress >= 1:
       break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
+    print(servo_pos_curr)
     #servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
