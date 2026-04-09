@@ -193,7 +193,7 @@ async def upslope_gait(front_left_leg, front_right_leg, back_left_leg, back_righ
   await set_wheel_speed(front_left_leg.wheel_location, 0.1)
   await wait_for_user()
   
-  await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min-front_right_leg.knee_neutral, 2) !!! too high
+  await rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral-front_right_leg.knee_max, 2) #!!! too high
   await wait_for_user()
   await rotate_servo(front_right_leg.hip_location, front_right_leg.hip_neutral-front_right_leg.hip_max, 2) #!!! too far
   await wait_for_user()
