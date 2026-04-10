@@ -82,7 +82,30 @@ async def rotate_servo_absolute(location, angle, period):
 async def set_wheel_speed(wheel_location, speed):
   kit.continuous_servo[wheel_location].throttle = speed
 
+async def set_angle(location, angle):
+  kit.servo[location].angle = angle
+
 # the first step in the automatic gait demo is to set all legs to their neutral positions
+async def initialize_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg): # WIP
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, 0.1),
+    set_wheel_speed(front_right_leg.wheel_location, 0.1),
+    set_wheel_speed(back_left_leg.wheel_location, 0.1),
+    set_wheel_speed(back_right_leg.wheel_location, 0.1)
+  )
+  await asyncio.gather(
+    set_angle(front_left_leg.knee_location, front_left_leg.knee_neutral),
+    set_angle(front_right_leg.knee_location, front_right_leg.knee_neutral),
+    set_angle(back_left_leg.knee_location, back_left_leg.knee_neutral),
+    set_angle(back_right_leg.knee_location, back_right_leg.knee_neutral)
+  )
+  await asyncio.gather(
+    set_angle(front_left_leg.hip_location, front_left_leg.hip_neutral),
+    set_angle(front_right_leg.hip_location, front_right_leg.hip_neutral),
+    set_angle(back_left_leg.hip_location, back_left_leg.hip_neutral),
+    set_angle(back_right_leg.hip_location, back_right_leg.hip_neutral)
+  )
+
 async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg): # WIP
   await asyncio.gather(
     set_wheel_speed(front_left_leg.wheel_location, 0.1),
@@ -91,16 +114,16 @@ async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right
     set_wheel_speed(back_right_leg.wheel_location, 0.1)
   )
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_neutral,2),
-    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_neutral,2),
-    rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_neutral,2),
-    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_neutral,2)
+    servo_rotate_absolute(front_left_leg.knee_location, front_left_leg.knee_neutral),
+    servo_rotate_absolute(front_right_leg.knee_location, front_right_leg.knee_neutral),
+    servo_rotate_absolute(back_left_leg.knee_location, back_left_leg.knee_neutral),
+    servo_rotate_absolute(back_right_leg.knee_location, back_right_leg.knee_neutral)
   )
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_neutral,2),
-    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_neutral,2),
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_neutral,2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_neutral,2)
+    servo_rotate_absolute(front_left_leg.hip_location, front_left_leg.hip_neutral),
+    servo_rotate_absolute(front_right_leg.hip_location, front_right_leg.hip_neutral),
+    servo_rotate_absolute(back_left_leg.hip_location, back_left_leg.hip_neutral),
+    servo_rotate_absolute(back_right_leg.hip_location, back_right_leg.hip_neutral)
   )
 
 # define the safe shutdown function (WIP)
