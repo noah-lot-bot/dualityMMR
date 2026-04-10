@@ -24,7 +24,7 @@ class leg:
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
 front_left_leg = leg(13,14,12, 1,95,21, 59,120,84)
 front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
-back_left_leg = leg(11,8,9, 47,140,120, 60,125,95)
+back_left_leg = leg(11,8,9, 47,140,120, 70,140,105)
 back_right_leg = leg(4,5,6, 28,125,48, 60,130,92)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
