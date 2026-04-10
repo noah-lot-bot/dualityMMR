@@ -63,7 +63,7 @@ async def rotate_servo(location, angle, period):
       break
     await asyncio.sleep(0.02)
     
-
+# function to handle a rotation to an absolute, not relative angle. with smoothing and velocity control.
 async def rotate_servo_absolute(location, angle, period):
   servo_pos_init = kit.servo[location].angle
   servo_pos_fin = angle
@@ -82,6 +82,7 @@ async def rotate_servo_absolute(location, angle, period):
 async def set_wheel_speed(wheel_location, speed):
   kit.continuous_servo[wheel_location].throttle = speed
 
+# a helper function to set absolute angle for the initialize_neutral function
 async def set_angle(location, angle):
   kit.servo[location].angle = angle
 
@@ -106,6 +107,7 @@ async def initialize_neutral(front_left_leg, front_right_leg, back_left_leg, bac
     set_angle(back_right_leg.hip_location, back_right_leg.hip_neutral)
   )
 
+# this will smoothly set back to neutral
 async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg): # WIP
   await asyncio.gather(
     set_wheel_speed(front_left_leg.wheel_location, 0.1),
@@ -114,16 +116,16 @@ async def set_neutral(front_left_leg, front_right_leg, back_left_leg, back_right
     set_wheel_speed(back_right_leg.wheel_location, 0.1)
   )
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_neutral,2),
-    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_neutral,2),
-    rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_neutral,2),
-    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_neutral,2)
+    rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_neutral, 1),
+    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_neutral, 1),
+    rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_neutral, 1),
+    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_neutral, 1)
   )
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_neutral,2),
-    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_neutral,2),
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_neutral,2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_neutral,2)
+    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_neutral, 1),
+    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_neutral, 1),
+    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_neutral, 1),
+    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_neutral, 1)
   )
 
 # define the safe shutdown function (WIP)
