@@ -73,8 +73,6 @@ async def rotate_servo_absolute(location, angle, period):
     progress = time_elapsed/period
     s_curve = (1-math.cos(progress*math.pi))/2
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
-    print(location)
-    print(servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
     if progress >= 1:
       break
@@ -154,8 +152,8 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   )
   # move hips forward
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_max, 2),
-    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_min, 2),
+    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_max/2, 2),
+    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_min/2, 2),
     rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min, 2),
     rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max, 2)
   )
