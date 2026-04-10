@@ -201,8 +201,8 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   await asyncio.gather(
     rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_min, 2),
     rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_max, 2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_max, 2),
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_min, 2)
+    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_max/2, 2),
+    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_min/2, 2)
   )
   # lower body
   await asyncio.gather(
@@ -215,8 +215,8 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   await asyncio.gather(
     rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_max, 2),
     rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_min, 2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_max, 2), #!!! too far
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_min, 2)
+    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min/2, 2), #!!! too far
+    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max/2, 2)
   )
   # raise body
   await asyncio.gather(
