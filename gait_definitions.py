@@ -25,7 +25,7 @@ class leg:
 front_left_leg = leg(13,14,12, 1,95,21, 59,120,84)
 front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
 back_left_leg = leg(11,10,9, 47,140,120, 20,85,60)
-back_right_leg = leg(4,5,6, 28,127,48, 60,130,92)
+back_right_leg = leg(4,5,6, 28,125,48, 60,130,92)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
   if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min):
