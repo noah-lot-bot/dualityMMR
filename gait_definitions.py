@@ -152,10 +152,10 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   )
   # roll wheels backwards
   await asyncio.gather(
-    set_wheel_speed(front_left_leg.wheel_location, -1),
-    set_wheel_speed(back_left_leg.wheel_location, -1),
-    set_wheel_speed(front_right_leg.wheel_location, 1),
-    set_wheel_speed(back_right_leg.wheel_location, 1)
+    set_wheel_speed(front_left_leg.wheel_location, 1),
+    set_wheel_speed(back_left_leg.wheel_location, 1),
+    set_wheel_speed(front_right_leg.wheel_location, -1),
+    set_wheel_speed(back_right_leg.wheel_location, -1)
   )
   # move hips forward
   await asyncio.gather(
