@@ -22,9 +22,9 @@ class leg:
     self.knee_neutral = knee_neutral
 
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
-front_left_leg = leg(13,14,12, 0,95,21, 59,125,84)
+front_left_leg = leg(13,14,12, 0,95,21, 59,120,84)
 front_right_leg = leg(2,1,0, 40,131,113, 20,90,55)
-back_left_leg = leg(11,10,9, 47,140,120, 25,85,60)
+back_left_leg = leg(11,10,9, 47,140,120, 20,85,60)
 back_right_leg = leg(4,5,6, 28,127,48, 60,130,92)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
@@ -145,24 +145,24 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   )
   # lower body
   await asyncio.gather(
-    rotate_servo(back_left_leg.knee_location, -(back_left_leg.knee_max-back_left_leg.knee_neutral), 2),
-    rotate_servo(front_left_leg.knee_location, -(front_left_leg.knee_neutral-front_left_leg.knee_max), 2),
-    rotate_servo(back_right_leg.knee_location, -(back_right_leg.knee_neutral-back_right_leg.knee_max), 2),
-    rotate_servo(front_right_leg.knee_location, -(front_right_leg.knee_neutral-front_right_leg.knee_min), 2)
+    rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_min, 2),
+    rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_max, 2),
+    rotate_servo(back_right_leg.knee_location, back_right_leg.knee_max, 2),
+    rotate_servo(front_right_leg.knee_location, front_right_leg.knee_min), 2)
   )
   # move hips forward
   await asyncio.gather(
     rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_max, 2),
     rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_min, 2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min/2, 2), #!!! too far
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max/2, 2)
+    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min, 2),
+    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max, 2)
   )
   # raise body
   await asyncio.gather(
-    rotate_servo(back_left_leg.knee_location, back_left_leg.knee_max-back_left_leg.knee_neutral, 2),
-    rotate_servo(front_left_leg.knee_location, front_left_leg.knee_neutral-front_left_leg.knee_max, 2),
-    rotate_servo(back_right_leg.knee_location, back_right_leg.knee_neutral-back_right_leg.knee_max, 2),
-    rotate_servo(front_right_leg.knee_location, front_right_leg.knee_neutral-front_right_leg.knee_min, 2)
+    rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_neutral, 2),
+    rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_neutral, 2),
+    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_neutral, 2),
+    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_neutral, 2)
   )
                  
 async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
