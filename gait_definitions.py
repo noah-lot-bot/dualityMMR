@@ -56,12 +56,13 @@ async def rotate_servo(location, angle, period):
     time_elapsed = time.time()-time_init
     progress = time_elapsed/period
     s_curve = (1-math.cos(progress*math.pi))/2
-    if progress >= 1:
-      break
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
     #servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
+    if progress >= 1:
+      break
     await asyncio.sleep(0.02)
+    
 
 async def rotate_servo_absolute(location, angle, period):
   servo_pos_init = kit.servo[location].angle
@@ -71,11 +72,10 @@ async def rotate_servo_absolute(location, angle, period):
     time_elapsed = time.time()-time_init
     progress = time_elapsed/period
     s_curve = (1-math.cos(progress*math.pi))/2
+    servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
+    kit.servo[location].angle = servo_pos_curr
     if progress >= 1:
       break
-    servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
-    #servo_pos_curr = await movement_restrictor(location, servo_pos_init, servo_pos_curr)
-    kit.servo[location].angle = servo_pos_curr
     await asyncio.sleep(0.02)
 
 # awaitable wheel speed set
