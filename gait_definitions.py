@@ -73,6 +73,8 @@ async def rotate_servo_absolute(location, angle, period):
     progress = time_elapsed/period
     s_curve = (1-math.cos(progress*math.pi))/2
     servo_pos_curr = servo_pos_init + (servo_pos_fin-servo_pos_init)*s_curve
+    print(location)
+    print(servo_pos_curr)
     kit.servo[location].angle = servo_pos_curr
     if progress >= 1:
       break
