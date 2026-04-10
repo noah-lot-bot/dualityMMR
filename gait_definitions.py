@@ -136,12 +136,25 @@ async def wait_for_user():
     await loop.run_in_executor(None, input)
 
 async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
+  # roll wheels forward 
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, 1),
+    set_wheel_speed(back_left_leg.wheel_location, 1),
+    set_wheel_speed(front_right_leg.wheel_location, -1),
+    set_wheel_speed(back_right_leg.wheel_location, -1)
+  )
   # move hips backward from neutral
   await asyncio.gather(
     rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_min, 2),
     rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_max, 2),
     rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_max/1.6, 2),
     rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_min*2, 2)
+  )
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, 0.1),
+    set_wheel_speed(back_left_leg.wheel_location, 0.1),
+    set_wheel_speed(front_right_leg.wheel_location, 0.1),
+    set_wheel_speed(back_right_leg.wheel_location, 0.1)
   )
   # lower body
   await asyncio.gather(
@@ -150,12 +163,26 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
     rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_max, 2),
     rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_min, 2)
   )
+  # roll wheels backwards
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, -1),
+    set_wheel_speed(back_left_leg.wheel_location, -1),
+    set_wheel_speed(front_right_leg.wheel_location, 1),
+    set_wheel_speed(back_right_leg.wheel_location, 1)
+  )
   # move hips forward
   await asyncio.gather(
     rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_max/2, 2),
     rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_min*2, 2),
     rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min, 2),
     rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max, 2)
+  )
+  # stop wheels
+  await asyncio.gather(
+    set_wheel_speed(front_left_leg.wheel_location, 0.1),
+    set_wheel_speed(back_left_leg.wheel_location, 0.1),
+    set_wheel_speed(front_right_leg.wheel_location, 0.1),
+    set_wheel_speed(back_right_leg.wheel_location, 0.1)
   )
   # raise body
   await asyncio.gather(
