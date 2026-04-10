@@ -1,6 +1,6 @@
 import asyncio 
 from sshkeyboard import listen_keyboard_manual, stop_listening
-import gait_definitions
+from gait_definitions import *
 from telemetry_handler import telemetry_handler
 
 asyncio.run(initialize_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg))
