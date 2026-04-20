@@ -22,10 +22,10 @@ class leg:
     self.knee_neutral = knee_neutral
 
 # we are going to hard code the servo locations because its way easier than asking for them (WIP)
-front_left_leg = leg(12,13,14, 40,60,135, 45,83,120)
-front_right_leg = leg(0,1,2, 1,80,100, 20,55,90)
-back_left_leg = leg(8,9,10, 80,153,165, 70,105,140)
-back_right_leg = leg(4,5,6, 10,30,100, 55,90,125)
+front_left_leg = leg(12,13,14, 40,135,60, 45,120,83)
+front_right_leg = leg(0,1,2, 1,100,80, 20,90,55)
+back_left_leg = leg(8,9,10, 80,165,153, 70,140,105)
+back_right_leg = leg(4,5,6, 10,100,30, 55,125,90)
 
 async def movement_restrictor(location, servo_pos_init, servo_pos_curr):
   if location == front_left_leg.hip_location and (servo_pos_curr>front_left_leg.hip_max or servo_pos_curr<front_left_leg.hip_min):
