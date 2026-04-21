@@ -9,7 +9,7 @@ import time
 import asyncio
 from data_handler import imu_reader
 
-broker = "10.222.100.27"
+broker = "192.168.8.157"
 port = 1883
 topic = "duality/telemetry"
 
