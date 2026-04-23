@@ -6,7 +6,7 @@ from telemetry_handler import telemetry_handler
 async def main():
   await initialize_neutral(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   while True:
-    await reverse_turtle_gait_fix(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
+    await turtle_gait_fix(front_left_leg, front_right_leg, back_left_leg, back_right_leg)
   
 if __name__=="__main__":
   try:
