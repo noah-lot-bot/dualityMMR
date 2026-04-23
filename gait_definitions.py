@@ -180,12 +180,12 @@ async def turtle_gait(front_left_leg, front_right_leg, back_left_leg, back_right
   )
 
 async def turtle_gait_fix(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
-  # move hips backward from neutral
+  # move hips forward
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_min, 3),
-    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_max, 3),
-    rotate_servo_absolute(back_right_leg.hip_location, 60, 3),
-    rotate_servo_absolute(back_left_leg.hip_location, 120, 3)
+    rotate_servo_absolute(front_left_leg.hip_location, 95, 2),
+    rotate_servo_absolute(front_right_leg.hip_location, 50, 2),
+    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min, 2),
+    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max, 2)
   )
   # lower body
   await asyncio.gather(
@@ -201,12 +201,12 @@ async def turtle_gait_fix(front_left_leg, front_right_leg, back_left_leg, back_r
     set_wheel_speed(front_right_leg.wheel_location, -0.5),
     set_wheel_speed(back_right_leg.wheel_location, -0.5)
   )
-  # move hips forward
+  # move hips backward from neutral
   await asyncio.gather(
-    rotate_servo_absolute(front_left_leg.hip_location, 95, 2),
-    rotate_servo_absolute(front_right_leg.hip_location, 50, 2),
-    rotate_servo_absolute(back_right_leg.hip_location, back_right_leg.hip_min, 2),
-    rotate_servo_absolute(back_left_leg.hip_location, back_left_leg.hip_max, 2)
+    rotate_servo_absolute(front_left_leg.hip_location, front_left_leg.hip_min, 3),
+    rotate_servo_absolute(front_right_leg.hip_location, front_right_leg.hip_max, 3),
+    rotate_servo_absolute(back_right_leg.hip_location, 60, 3),
+    rotate_servo_absolute(back_left_leg.hip_location, 120, 3)
   )
   # stop wheels
   await asyncio.gather(
