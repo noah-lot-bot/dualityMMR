@@ -219,8 +219,8 @@ async def turtle_gait_fix(front_left_leg, front_right_leg, back_left_leg, back_r
   await asyncio.gather(
     rotate_servo_absolute(back_left_leg.knee_location, back_left_leg.knee_max, 2),
     rotate_servo_absolute(front_left_leg.knee_location, front_left_leg.knee_min, 2),
-    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_max, 2),
-    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_min, 2)
+    rotate_servo_absolute(back_right_leg.knee_location, back_right_leg.knee_min, 2),
+    rotate_servo_absolute(front_right_leg.knee_location, front_right_leg.knee_max, 2)
   )
                  
 async def turn_right_gait(front_left_leg, front_right_leg, back_left_leg, back_right_leg):
