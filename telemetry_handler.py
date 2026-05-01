@@ -1,16 +1,16 @@
-# static stability: RMS of pitch and roll
-# jerk: derivative of acceleration
-# vibration: fft of accel data
-# zero moment point control
-# pull voltage data? and cpu usage. should be easy enough
 import paho.mqtt.client as mqtt
 import json
 import time
 import asyncio
 from data_handler import imu_reader
 
+# raspberry pi IP on network
 broker = "192.168.8.157"
+
+# port supplied by Eclipse Mosquitto
 port = 1883
+
+# adjustable
 topic = "duality/telemetry"
 
 # create the client
